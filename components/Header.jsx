@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
-import { IsAuthContext } from '@/providers/IsAuthProvider';
+// import { IsAuthContext } from '@/providers/AuthProvider';
+import { useAuthContext } from '@/providers/AuthProvider';
 import { auth } from '../firebase';
 import { signOut } from 'firebase/auth';
+
 // import styles from './Header.module.css';
 import {
   Box,
@@ -18,26 +20,37 @@ import {
 import { HamburgerIcon } from '@chakra-ui/icons';
 
 export default function Header() {
-  const { isAuth, setIsAuth } = useContext(IsAuthContext);
+  // const { isAuth, setIsAuth } = useContext(IsAuthContext);
+  const { user } = useAuthContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  console.log('ヘッダー' + isAuth);
+  console.log('ヘッダー' + user);
 
-  const logOut = () => {
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-        setIsAuth(false);
-        console.log(isAuth);
-      })
-      .catch((error) => {
+  const logOut = async () => {
+    try {
+      // const auth = getAuth();
+      await signOut(auth);
+    } catch (error) {
+      if (error instanceof FirebaseError) {
         console.log(error);
-        // An error happened.
-      });
+      }
+    }
   };
+
+  const logIn = async () => {
+    const user = await loginWithGoogle();
+    console.log(user);
+  };
+
   return (
     <>
       <header>
-        <Flex justifyContent="space-between" alignItems="center" gap="60px" height="80px" className="container">
+        <Flex
+          justifyContent="space-between"
+          alignItems="center"
+          gap="60px"
+          height="80px"
+          className="container"
+        >
           <Box as="p">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -58,10 +71,20 @@ export default function Header() {
               <li>
                 <Link href="/chat">Chat</Link>
               </li>
-              <li>{isAuth ? <p onClick={logOut}>Logout</p> : <Link href="/login">Login</Link>}</li>
+              <li>
+                {user ? (
+                  <p onClick={logOut}>Logout</p>
+                ) : (
+                  <Link href="/login">Login</Link>
+                )}
+              </li>
             </Flex>
           </nav>
-          <IconButton icon={<HamburgerIcon />} display={{ base: 'block', md: 'none' }} onClick={onOpen} />
+          <IconButton
+            icon={<HamburgerIcon />}
+            display={{ base: 'block', md: 'none' }}
+            onClick={onOpen}
+          />
         </Flex>
         <Drawer placement="left" size="xs" onClose={onClose} isOpen={isOpen}>
           <DrawerOverlay>
@@ -74,7 +97,11 @@ export default function Header() {
                   <Link href="/chat">Chat</Link>
                 </Button>
                 <Button w="100%" justifyContent="flex-start">
-                  {isAuth ? <p onClick={logOut}>Logout</p> : <Link href="/login">Login</Link>}
+                  {user ? (
+                    <p onClick={logOut}>Logout</p>
+                  ) : (
+                    <Link href="/login">Login</Link>
+                  )}
                 </Button>
               </DrawerBody>
             </DrawerContent>

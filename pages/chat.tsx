@@ -1,17 +1,17 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
-import { IsAuthContext } from '@/providers/IsAuthProvider';
+import { useState } from 'react';
+import { useAuthContext } from '@/providers/AuthProvider';
 import Header from '@/components/Header';
 
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 
-export default function Chat() {
-  const { isAuth } = useContext(IsAuthContext);
+export default function Chat(): JSX.Element | null {
+  const { user } = useAuthContext();
   const router = useRouter();
 
-  console.log('tweet ' + isAuth);
+  console.log('tweet' + user);
 
   const [twtext, setTwtext] = useState('');
   const twTextWriting = (e) => {
@@ -43,7 +43,11 @@ export default function Chat() {
         <h1>Chat</h1>
         {/* {twtext} */}
         <p>
-          <input onChange={twTextWriting} type="text" placeholder="Lets Tweet!" />
+          <input
+            onChange={twTextWriting}
+            type="text"
+            placeholder="Lets Tweet!"
+          />
         </p>
         <p>
           <button onClick={sendPost}>Tweetする</button>

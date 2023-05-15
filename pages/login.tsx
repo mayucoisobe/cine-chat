@@ -1,29 +1,30 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
-import { IsAuthContext } from '@/providers/IsAuthProvider';
 import Header from '@/components/Header';
-
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  UserCredential,
+} from 'firebase/auth';
+import { FirebaseError } from 'firebase/app';
 import { auth } from '../firebase';
 const provider = new GoogleAuthProvider();
 
-export default function Login() {
-  const { isAuth, setIsAuth } = useContext(IsAuthContext);
+// Ts: JSX.Element,Promise<void>,UserCredential
+export default function Login(): JSX.Element {
   const router = useRouter();
-
-  console.log('ログインCOMP最初' + isAuth);
-  const loginWithGoogle = async () => {
+  const loginWithGoogle = async (): Promise<void> => {
     try {
-      const { user } = await signInWithPopup(auth, provider);
-      console.log(isAuth);
-      setIsAuth(true);
+      const { user }: UserCredential = await signInWithPopup(auth, provider);
       router.push('/');
       console.log({ uid: user.uid, displayName: user.displayName });
     } catch (error) {
+      if (error instanceof FirebaseError) {
+      }
       console.log(error);
     }
   };
+
   return (
     <div>
       <Head>
@@ -33,10 +34,9 @@ export default function Login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <div className="home">
+      <div>
         <h1>ログイン</h1>
-        <p>ログインしてください</p>
-        <button onClick={loginWithGoogle}>Googleログイン</button>
+        <button onClick={loginWithGoogle}>Googleアカウントでログイン</button>
       </div>
     </div>
   );

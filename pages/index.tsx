@@ -1,17 +1,24 @@
 import Head from 'next/head';
 import type { NextPage } from 'next';
-import { Box, Heading, Button } from '@chakra-ui/react';
-import { useContext, useEffect, useState } from 'react';
-import { IsAuthContext } from '@/providers/IsAuthProvider';
+import { Box, Heading } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { useAuthContext } from '@/providers/AuthProvider';
 import Header from '@/components/Header';
 
-import { collection, query, onSnapshot, getDocs, doc, orderBy } from 'firebase/firestore';
+import {
+  collection,
+  query,
+  onSnapshot,
+  getDocs,
+  doc,
+  orderBy,
+} from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '../firebase';
 
 const Page: NextPage = () => {
-  const { isAuth, setIsAuth } = useContext(IsAuthContext);
-  console.log('HOME最初' + isAuth);
+  const { user } = useAuthContext();
+  console.log('HOME最初' + user);
   const [getTweet, setGetTweet] = useState([]);
 
   useEffect(() => {
@@ -39,12 +46,12 @@ const Page: NextPage = () => {
       <Head></Head>
       <Header />
       <Box>
-        <Heading>24h chat</Heading>
+        <Heading>chat</Heading>
       </Box>
       <main>
         <div>
           <div>
-            {isAuth &&
+            {user &&
               getTweet.map((tweet, index) => {
                 return (
                   <div key={index}>
