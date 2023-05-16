@@ -7,6 +7,7 @@ import { useAuthContext } from '@/providers/AuthProvider';
 import { Header } from '@/components/Header';
 import { AuthGuard } from '@/feature/auth/AuthGuard';
 import { chatRooms } from '@/components/chatrooms';
+import { popupTest } from '@/components/popupTest';
 
 // import {
 //   collection,
@@ -26,9 +27,7 @@ const Page: NextPage = () => {
     <>
       <Head></Head>
       <Header />
-      <AuthGuard>
-        {user ? <p>ログイン状態</p> : <p>ログアウト状態</p>}
-      </AuthGuard>
+      <AuthGuard>{user ? <p>ログイン状態</p> : <p>ログアウト状態</p>}</AuthGuard>
       <main>
         <div>
           <p>- ALL ROOMS -</p>
