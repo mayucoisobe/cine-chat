@@ -23,7 +23,7 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/login.tsx",
-    "components/Header.jsx",
+    "components/Header.tsx",
     "providers/---IsAuthProvider copy.jsx",
     "firebase.jsx"
   ],

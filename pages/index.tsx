@@ -1,25 +1,20 @@
 import Head from 'next/head';
 import type { NextPage } from 'next';
-import { Box, Heading } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
+import { Box, Heading } from '@chakra-ui/react';
 import { useAuthContext } from '@/providers/AuthProvider';
-import Header from '@/components/Header';
+import { Header } from '@/components/Header';
 
-import {
-  collection,
-  query,
-  onSnapshot,
-  getDocs,
-  doc,
-  orderBy,
-} from 'firebase/firestore';
+import { collection, query, onSnapshot, getDocs, doc, orderBy } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '../firebase';
+import { AuthGuard } from '@/feature/auth/AuthGuard';
 
 const Page: NextPage = () => {
   const { user } = useAuthContext();
   console.log('HOME最初' + user);
   const [getTweet, setGetTweet] = useState([]);
+  // const [chats, setChats] = useState<{ message: string }[]>([]);
 
   useEffect(() => {
     // 変更があるたびに自動更新
@@ -45,7 +40,10 @@ const Page: NextPage = () => {
     <>
       <Head></Head>
       <Header />
-      <Box>
+      <AuthGuard>
+        <p>チャクラUI</p>
+      </AuthGuard>
+      {/* <Box>
         <Heading>chat</Heading>
       </Box>
       <main>
@@ -67,7 +65,7 @@ const Page: NextPage = () => {
               })}
           </div>
         </div>
-      </main>
+      </main> */}
     </>
   );
 };

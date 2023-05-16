@@ -1,22 +1,18 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import Header from '@/components/Header';
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  UserCredential,
-} from 'firebase/auth';
+import { Header } from '@/components/Header';
+import { GoogleAuthProvider, signInWithPopup, UserCredential } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 import { auth } from '../firebase';
 const provider = new GoogleAuthProvider();
 
 // Ts: JSX.Element,Promise<void>,UserCredential
 export default function Login(): JSX.Element {
-  const router = useRouter();
+  const { push } = useRouter();
   const loginWithGoogle = async (): Promise<void> => {
     try {
       const { user }: UserCredential = await signInWithPopup(auth, provider);
-      router.push('/');
+      push('/');
       console.log({ uid: user.uid, displayName: user.displayName });
     } catch (error) {
       if (error instanceof FirebaseError) {

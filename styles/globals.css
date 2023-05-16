@@ -105,3 +105,34 @@ a {
     color-scheme: dark;
   }
 } */
+
+:root {
+  --primary-color: ;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  /* font-size: 62.5%; */
+}
+body {
+  /* font-size: 1.6rem; */
+}
+li {
+  list-style: none;
+}
+a {
+  display: block;
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.fwb {
+  font-weight: bold;
+}
