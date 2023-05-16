@@ -1,11 +1,15 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Header } from '@/components/Header';
-import { GoogleAuthProvider, signInWithPopup, UserCredential } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  UserCredential,
+} from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 import { auth } from '../firebase';
-const provider = new GoogleAuthProvider();
 
+const provider = new GoogleAuthProvider();
 // Ts: JSX.Element,Promise<void>,UserCredential
 export default function Login(): JSX.Element {
   const { push } = useRouter();
@@ -31,7 +35,7 @@ export default function Login(): JSX.Element {
       </Head>
       <Header />
       <div>
-        <h1>ログイン</h1>
+        <h1>ログインページ</h1>
         <button onClick={loginWithGoogle}>Googleアカウントでログイン</button>
       </div>
     </div>

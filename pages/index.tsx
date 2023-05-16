@@ -1,71 +1,46 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { Box, Heading } from '@chakra-ui/react';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { Header } from '@/components/Header';
-
-import { collection, query, onSnapshot, getDocs, doc, orderBy } from 'firebase/firestore';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth, db } from '../firebase';
 import { AuthGuard } from '@/feature/auth/AuthGuard';
+import { chatRooms } from '@/components/chatrooms';
+
+// import {
+//   collection,
+//   query,
+//   onSnapshot,
+//   getDocs,
+//   doc,
+//   orderBy,
+// } from 'firebase/firestore';
+// import { onAuthStateChanged } from 'firebase/auth';
+// import { auth, db } from '../firebase';
 
 const Page: NextPage = () => {
   const { user } = useAuthContext();
-  console.log('HOME最初' + user);
-  const [getTweet, setGetTweet] = useState([]);
-  // const [chats, setChats] = useState<{ message: string }[]>([]);
-
-  useEffect(() => {
-    // 変更があるたびに自動更新
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const cloneGetTweet = [...getTweet];
-        const q = query(collection(db, 'tweets'), orderBy('createdAt', 'desc'));
-        onSnapshot(q, (snapshot) => {
-          snapshot.docChanges().forEach((change) => {
-            // console.log(change.doc.data());
-            if (change.type === 'added') {
-              const editedData = { ...change.doc.data(), id: change.doc.id };
-              cloneGetTweet.push(editedData);
-              setGetTweet(cloneGetTweet);
-            }
-          });
-        });
-      }
-    });
-  }, []);
 
   return (
     <>
       <Head></Head>
       <Header />
       <AuthGuard>
-        <p>チャクラUI</p>
+        {user ? <p>ログイン状態</p> : <p>ログアウト状態</p>}
       </AuthGuard>
-      {/* <Box>
-        <Heading>chat</Heading>
-      </Box>
       <main>
         <div>
-          <div>
-            {user &&
-              getTweet.map((tweet, index) => {
-                return (
-                  <div key={index}>
-                    <div>
-                      <p>
-                        <img src={tweet.user.photoURL} alt="" />
-                      </p>
-                      <p>@{tweet.user.name}</p>
-                    </div>
-                    <p>{tweet.twText}</p>
-                  </div>
-                );
-              })}
-          </div>
+          <p>- ALL ROOMS -</p>
+          <ul>
+            {chatRooms.map((room) => (
+              <li key={room.id}>
+                <Link href={`/room/${room.id}`}>{room.title}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
-      </main> */}
+      </main>
     </>
   );
 };

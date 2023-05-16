@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import {
   Box,
   Button,
@@ -12,13 +13,11 @@ import {
   useDisclosure,
   useToast,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { HamburgerIcon } from '@chakra-ui/icons';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { auth } from '../firebase';
 import { signOut } from 'firebase/auth';
 import { FirebaseError } from '@firebase/util';
-
-import { HamburgerIcon } from '@chakra-ui/icons';
 
 export const Header = (): JSX.Element => {
   // export default function Header(): JSX.Element {
@@ -51,7 +50,13 @@ export const Header = (): JSX.Element => {
   return (
     <>
       <header>
-        <Flex justifyContent="space-between" alignItems="center" gap="60px" height="80px" className="container">
+        <Flex
+          justifyContent="space-between"
+          alignItems="center"
+          gap="60px"
+          height="80px"
+          className="container"
+        >
           <Box as="p">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -70,12 +75,22 @@ export const Header = (): JSX.Element => {
                 <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href="/chat">Chat</Link>
+                <Link href="/tweet">Tweet24</Link>
               </li>
-              <li>{user ? <p onClick={logOut}>Logout</p> : <Link href="/login">Login</Link>}</li>
+              <li>
+                {user ? (
+                  <p onClick={logOut}>Logout</p>
+                ) : (
+                  <Link href="/login">Login</Link>
+                )}
+              </li>
             </Flex>
           </nav>
-          <IconButton icon={<HamburgerIcon />} display={{ base: 'block', md: 'none' }} onClick={onOpen} />
+          <IconButton
+            icon={<HamburgerIcon />}
+            display={{ base: 'block', md: 'none' }}
+            onClick={onOpen}
+          />
         </Flex>
         <Drawer placement="left" size="xs" onClose={onClose} isOpen={isOpen}>
           <DrawerOverlay>
@@ -85,10 +100,14 @@ export const Header = (): JSX.Element => {
                   <Link href="/">TOP</Link>
                 </Button>
                 <Button w="100%" justifyContent="flex-start">
-                  <Link href="/chat">Chat</Link>
+                  <Link href="/tweet">Tweet24</Link>
                 </Button>
                 <Button w="100%" justifyContent="flex-start">
-                  {user ? <p onClick={logOut}>Logout</p> : <Link href="/login">Login</Link>}
+                  {user ? (
+                    <p onClick={logOut}>Logout</p>
+                  ) : (
+                    <Link href="/login">Login</Link>
+                  )}
                 </Button>
               </DrawerBody>
             </DrawerContent>
