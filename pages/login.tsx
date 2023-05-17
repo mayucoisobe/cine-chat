@@ -9,10 +9,12 @@ import {
 import { FirebaseError } from 'firebase/app';
 import { auth } from '../firebase';
 
-const provider = new GoogleAuthProvider();
+// const provider = new GoogleAuthProvider();
 // Ts: JSX.Element,Promise<void>,UserCredential
 export default function Login(): JSX.Element {
   const { push } = useRouter();
+  const provider = new GoogleAuthProvider();
+
   const loginWithGoogle = async (): Promise<void> => {
     try {
       const { user }: UserCredential = await signInWithPopup(auth, provider);

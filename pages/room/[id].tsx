@@ -1,6 +1,9 @@
 import type { GetServerSideProps, NextPage } from 'next';
+import { RouteModule } from 'next/dist/server/future/route-modules/route-module';
 import Head from 'next/head';
 import Link from 'next/link';
+import { MessageInput } from '../../components/MessageInput';
+import { MessageList } from '../../components/MessageList';
 // import { useRouter } from 'next/router';
 
 // ページコンポーネントの引数の型定義
@@ -20,7 +23,7 @@ export const getServerSideProps: GetServerSideProps<StatusPageProps> = async (
   return { props: { id } };
 };
 
-const StatusPage: NextPage<StatusPageProps> = (props) => {
+const ChatRoomPage: NextPage<StatusPageProps> = (props) => {
   const title = `${props.id}-room`;
   return (
     <>
@@ -32,8 +35,12 @@ const StatusPage: NextPage<StatusPageProps> = (props) => {
       <div>
         <Link href="/">← Back to home</Link>
       </div>
+      <div>
+        <MessageList roomId={props.id} />
+        <MessageInput roomId={props.id} />
+      </div>
     </>
   );
 };
 
-export default StatusPage;
+export default ChatRoomPage;
