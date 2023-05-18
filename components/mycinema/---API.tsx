@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { useEffect } from 'react';
+
 type Props = {
   title: string;
   fetchUrl: string;
@@ -13,7 +16,7 @@ type Movie = {
   backdrop_path: string;
 };
 
-export const Row = ({ title, fetchUrl }: Props) => {
+export const Result = ({ title, fetchUrl }: Props) => {
   const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {

@@ -20,13 +20,11 @@ import { signOut } from 'firebase/auth';
 import { FirebaseError } from '@firebase/util';
 
 export const Header = (): JSX.Element => {
-  // export default function Header(): JSX.Element {
   const { user } = useAuthContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const toast = useToast();
   const { push } = useRouter();
-  // console.log('ヘッダー' + user);
 
   const logOut = async () => {
     setIsLoading(true);
