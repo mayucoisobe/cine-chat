@@ -23,11 +23,6 @@ const ques = [
   },
 ];
 
-const handleClick = () => {
-  console.log('クリックされた');
-  setIsOpen(!isOpen);
-};
-
 export default function popupTest() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -37,17 +32,11 @@ export default function popupTest() {
   };
 
   const addSpans = (str) => {
-    const handleClick = () => {
-      console.log('クリックされた');
-      setIsOpen(!isOpen);
-    };
-
     const keywords = ques[0].keywords;
     const pattern = new RegExp(keywords.join('|'), 'g');
     const addSpans = str.replace(
       pattern,
-      (m) =>
-        `<span style="text-decoration: underline;" onClick={handleClick}>${m}</span>`
+      (m) => `<span style="text-decoration: underline;" onClick={handleClick}>${m}</span>`
     );
     console.log(addSpans);
     return <div dangerouslySetInnerHTML={{ __html: addSpans }} />;
@@ -56,19 +45,22 @@ export default function popupTest() {
   return (
     <>
       <div>popupTest</div>
-      <Popover isOpen={isOpen}>
+      {/* <Popover isOpen={isOpen}>
         <PopoverTrigger>
-          <Button>{addSpans(ques[0].answer)}</Button>
+          <Button onClick={handleClick}>{addSpans(ques[0].answer)}</Button>
         </PopoverTrigger>
         <PopoverContent>
           <PopoverArrow />
           <PopoverCloseButton />
           <PopoverHeader>Confirmation!</PopoverHeader>
-          <PopoverBody>
-            Are you sure you want to have that milkshake?
-          </PopoverBody>
+          <PopoverBody>Are you sure you want to have that milkshake?</PopoverBody>
         </PopoverContent>
-      </Popover>
+      </Popover> */}
+
+      <div>
+        <h3>答えは</h3>
+        <div>{addSpans(ques[0].answer)}</div>
+      </div>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuthContext } from '@/providers/AuthProvider';
-import { sendMessage } from './sendgetMessage';
+import { sendMessage } from './sendGetMessage';
 
 export const MessageInput = ({ roomId }): JSX.Element => {
   const { user } = useAuthContext();
