@@ -7,7 +7,6 @@ import { useAuthContext } from '@/providers/AuthProvider';
 import { Header } from '@/components/Header';
 import { AuthGuard } from '@/feature/auth/AuthGuard';
 import { chatRooms } from '@/components/chatrooms';
-import { popupTest } from '@/components/popupTest';
 
 // import {
 //   collection,

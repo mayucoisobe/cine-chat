@@ -48,13 +48,7 @@ export const Header = (): JSX.Element => {
   return (
     <>
       <header>
-        <Flex
-          justifyContent="space-between"
-          alignItems="center"
-          gap="60px"
-          height="80px"
-          className="container"
-        >
+        <Flex justifyContent="space-between" alignItems="center" gap="60px" height="80px" className="container">
           <Box as="p">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -76,19 +70,12 @@ export const Header = (): JSX.Element => {
                 <Link href="/tweet">Tweet24</Link>
               </li>
               <li>
-                {user ? (
-                  <p onClick={logOut}>Logout</p>
-                ) : (
-                  <Link href="/login">Login</Link>
-                )}
+                <Link href="/mycinema02">mycinema</Link>
               </li>
+              <li>{user ? <p onClick={logOut}>Logout</p> : <Link href="/login">Login</Link>}</li>
             </Flex>
           </nav>
-          <IconButton
-            icon={<HamburgerIcon />}
-            display={{ base: 'block', md: 'none' }}
-            onClick={onOpen}
-          />
+          <IconButton icon={<HamburgerIcon />} display={{ base: 'block', md: 'none' }} onClick={onOpen} />
         </Flex>
         <Drawer placement="left" size="xs" onClose={onClose} isOpen={isOpen}>
           <DrawerOverlay>
@@ -101,11 +88,7 @@ export const Header = (): JSX.Element => {
                   <Link href="/tweet">Tweet24</Link>
                 </Button>
                 <Button w="100%" justifyContent="flex-start">
-                  {user ? (
-                    <p onClick={logOut}>Logout</p>
-                  ) : (
-                    <Link href="/login">Login</Link>
-                  )}
+                  {user ? <p onClick={logOut}>Logout</p> : <Link href="/login">Login</Link>}
                 </Button>
               </DrawerBody>
             </DrawerContent>
