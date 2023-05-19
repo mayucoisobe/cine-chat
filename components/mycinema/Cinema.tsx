@@ -20,14 +20,26 @@ export const Cinema = (): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(true);
   const [movies, setMovies] = useState<Movie[]>([]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [type, setType] = useState<string>('');
 
-  const search = (searchValue: string) => {
+  const search = (searchValue: string, selectedOption: string) => {
     setLoading(true);
     setErrorMessage(null);
+    console.log(selectedOption);
+
+    let apiUrl = '';
+
+    if (selectedOption === 'option1') {
+      apiUrl = MOVIE_API_URL;
+      setType('movie');
+    } else if (selectedOption === 'option2') {
+      apiUrl = TV_API_URL;
+      setType('tv');
+    }
 
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${MOVIE_API_URL}&query=${searchValue}`);
+        const res = await axios.get(`${apiUrl}&query=${searchValue}`);
         console.log(res.data.results);
         setMovies(res.data.results);
         setLoading(false);
@@ -49,7 +61,9 @@ export const Cinema = (): JSX.Element => {
         ) : !loading && movies.length === 0 ? (
           <span>該当するデータがありませんでした</span>
         ) : (
-          movies.map((movie, index) => <Result key={`${index}-${movie.title}`} movie={movie} />)
+          movies.map((movie, index) => (
+            <Result key={`${index}-${movie.title}`} movie={movie} type={type} />
+          ))
         )}
       </div>
     </>
@@ -63,3 +77,6 @@ export const Cinema = (): JSX.Element => {
 // Netflexの作品検索
 // https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_networks=213
 // https://api.themoviedb.org/3/discover/tv?api_key=a8063e5f47a60daac25dbb25e7c45a4b&with_networks=213
+
+// 画像のない映画の検索
+// laland
