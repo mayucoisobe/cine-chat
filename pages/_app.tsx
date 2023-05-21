@@ -1,13 +1,23 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { AuthProvider } from '../providers/AuthProvider';
+import { Layout } from '@/components/Layout';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider>
+    <ChakraProvider
+      theme={extendTheme({
+        fonts: {
+          heading: "'Zen Maru Gothic', sans-serif;",
+          body: "'Zen Maru Gothic', sans-serif;",
+        },
+      })}
+    >
       <AuthProvider>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </AuthProvider>
     </ChakraProvider>
   );

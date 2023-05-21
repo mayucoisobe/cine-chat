@@ -116,10 +116,6 @@ a {
 }
 html {
   box-sizing: border-box;
-  /* font-size: 62.5%; */
-}
-body {
-  /* font-size: 1.6rem; */
 }
 li {
   list-style: none;
@@ -135,4 +131,10 @@ img {
 }
 .fwb {
   font-weight: bold;
+}
+.stars {
+  display: flex;
+}
+.font-ttl {
+  font-family: 'Darumadrop One', cursive;
 }

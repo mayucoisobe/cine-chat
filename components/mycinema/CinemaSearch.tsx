@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Search } from './Search';
-import { Result } from './Result';
+import { SearchResult } from './SearchResult';
 
 type Movie = {
   id: number;
@@ -16,7 +16,7 @@ const API_KEY = 'a8063e5f47a60daac25dbb25e7c45a4b';
 const MOVIE_API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=ja-JP`;
 const TV_API_URL = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=ja-JP`;
 
-export const Cinema = (): JSX.Element => {
+export const CinemaSearch = (): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(true);
   const [movies, setMovies] = useState<Movie[]>([]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -25,10 +25,8 @@ export const Cinema = (): JSX.Element => {
   const search = (searchValue: string, selectedOption: string) => {
     setLoading(true);
     setErrorMessage(null);
-    console.log(selectedOption);
 
     let apiUrl = '';
-
     if (selectedOption === 'option1') {
       apiUrl = MOVIE_API_URL;
       setType('movie');
@@ -36,6 +34,8 @@ export const Cinema = (): JSX.Element => {
       apiUrl = TV_API_URL;
       setType('tv');
     }
+
+    console.log(apiUrl, type);
 
     const fetchData = async () => {
       try {
@@ -54,16 +54,13 @@ export const Cinema = (): JSX.Element => {
   return (
     <>
       <Search search={search} />
-      <p>映画を探す</p>
       <div>
         {errorMessage ? (
           <div>{errorMessage}</div>
         ) : !loading && movies.length === 0 ? (
           <span>該当するデータがありませんでした</span>
         ) : (
-          movies.map((movie, index) => (
-            <Result key={`${index}-${movie.title}`} movie={movie} type={type} />
-          ))
+          movies.map((movie, index) => <SearchResult key={`${index}-${movie.id}`} movie={movie} type={type} />)
         )}
       </div>
     </>
@@ -72,7 +69,10 @@ export const Cinema = (): JSX.Element => {
 
 // https://api.themoviedb.org/3/search/movie?api_key=a8063e5f47a60daac25dbb25e7c45a4b&query=Jack+Reacher
 // これで各作品のidが取得できるので、movie?の箇所にidを入れてdetail を見たりとかできるぽい？
-// https://api.themoviedb.org/3/movie/343611?api_key=a8063e5f47a60daac25dbb25e7c45a4b
+// https://api.themoviedb.org/3/movie/8392?api_key=a8063e5f47a60daac25dbb25e7c45a4b&language=ja-JP
+// https://api.themoviedb.org/3/tv/87739?api_key=a8063e5f47a60daac25dbb25e7c45a4b&language=ja-JP
+// type (movie or tv) と id(各作品ごとにあり) をもとに検索をかける
+// `https://api.themoviedb.org/3/${type}/${id}?api_key=a8063e5f47a60daac25dbb25e7c45a4b&language=ja-JP`
 
 // Netflexの作品検索
 // https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_networks=213

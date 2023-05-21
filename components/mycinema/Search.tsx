@@ -26,11 +26,7 @@ export const Search = ({ search }): JSX.Element => {
 
   return (
     <>
-      <Select
-        value={selectedOption}
-        onChange={handleSelectChange}
-        variant="flushed"
-      >
+      <Select value={selectedOption} onChange={handleSelectChange} variant="flushed">
         <option value="option1">Movies</option>
         <option value="option2">TV shows</option>
       </Select>
@@ -42,27 +38,8 @@ export const Search = ({ search }): JSX.Element => {
           placeholder="タイトルを入力"
           focusBorderColor="pink.400"
         />
-        <IconButton
-          onClick={callSearchFunction}
-          type="submit"
-          icon={<SearchIcon />}
-          aria-label="Search database"
-        />
+        <IconButton onClick={callSearchFunction} type="submit" icon={<SearchIcon />} aria-label="Search database" />
       </form>
     </>
   );
 };
-
-{
-  //   <input
-  //   value={searchValue}
-  //   onChange={searchInputChanges}
-  //   type="text"
-  //   placeholder="タイトルを入力"
-  // />
-  /* <input
-          onClick={callSearchFunction}
-          type="submit"
-          value="SEARCH"
-        ></input> */
-}

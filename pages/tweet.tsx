@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import { Button, Input } from '@chakra-ui/react';
 import { useAuthContext } from '@/providers/AuthProvider';
-import { Header } from '@/components/Header';
 import {
   collection,
   addDoc,
@@ -13,6 +13,8 @@ import {
 } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '../firebase';
+import { format, formatDistance } from 'date-fns';
+import { ja } from 'date-fns/locale';
 
 export default function Tweet(): JSX.Element {
   const { user } = useAuthContext();
@@ -22,7 +24,8 @@ export default function Tweet(): JSX.Element {
   };
 
   // チャットをfirebaseに追加
-  const sendPost = async () => {
+  const sendPost = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
     if (auth.currentUser) {
       await addDoc(collection(db, 'tweets'), {
         createdAt: serverTimestamp(),
@@ -33,6 +36,7 @@ export default function Tweet(): JSX.Element {
           photoURL: auth.currentUser.photoURL,
         },
       });
+      setTwtext('');
     }
   };
 
@@ -50,22 +54,36 @@ export default function Tweet(): JSX.Element {
 
   // チャットデータをfirebaseから取得
   const [getTweet, setGetTweet] = useState<Tweet[]>([]);
+
   useEffect(() => {
-    const q = query(collection(db, 'tweets'), orderBy('createdAt', 'desc'));
+    const q = query(collection(db, 'tweets'), orderBy('createdAt', 'asc'));
     const unsub = onSnapshot(q, (snapshot) => {
       const tweets = [];
       snapshot.forEach((doc) => {
         tweets.push({ id: doc.id, ...doc.data() });
       });
       setGetTweet(tweets);
-      // console.log(tweets);
-      // console.log(getTweet);
     });
 
     return () => {
       unsub();
     };
-  }, []);
+  }, [user]);
+
+  // timestamp型のデータを変換;
+  const time = (date: Timestamp | null) => {
+    if (date) {
+      let timestamp = formatDistance(new Date(), date.toDate(), {
+        locale: ja,
+      });
+      if (timestamp.indexOf('未満') !== -1) {
+        return (timestamp = 'たった今');
+      } else {
+        return (timestamp = timestamp + '前');
+      }
+    }
+    return '';
+  };
 
   // useEffect(() => {
   //   onAuthStateChanged(auth, async (user) => {
@@ -94,10 +112,8 @@ export default function Tweet(): JSX.Element {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
       <div className="home">
         <h1>Tweet24</h1>
-        {/* {twtext} */}
         <main>
           <div>
             <div>
@@ -112,22 +128,23 @@ export default function Tweet(): JSX.Element {
                         <p>@{tweet.user.name}</p>
                       </div>
                       <p>{tweet.twText}</p>
+                      <span>{time(tweet.createdAt)}</span>
                     </div>
                   );
                 })}
             </div>
           </div>
         </main>
-        <p>
-          <input
-            onChange={twTextWriting}
-            type="text"
-            placeholder="Lets Tweet!"
-          />
-        </p>
-        <p>
-          <button onClick={sendPost}>Tweetする</button>
-        </p>
+        <form>
+          <p>
+            <Input onChange={twTextWriting} type="text" value={twtext} placeholder="Lets Tweet!" />
+          </p>
+          <p>
+            <Button onClick={sendPost} type="submit">
+              Tweetする
+            </Button>
+          </p>
+        </form>
       </div>
     </div>
   );
