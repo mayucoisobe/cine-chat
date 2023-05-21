@@ -129,6 +129,12 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+/* ====================
+
+chakra uiと併用のcss
+
+==================== */
 .fwb {
   font-weight: bold;
 }
@@ -137,4 +143,7 @@ img {
 }
 .font-ttl {
   font-family: 'Darumadrop One', cursive;
+}
+.message.own-message {
+  text-align: right;
 }

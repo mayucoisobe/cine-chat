@@ -13,7 +13,7 @@ import {
 } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '../firebase';
-import { format, formatDistance } from 'date-fns';
+import { formatDistance } from 'date-fns';
 import { ja } from 'date-fns/locale';
 
 export default function Tweet(): JSX.Element {
@@ -76,11 +76,7 @@ export default function Tweet(): JSX.Element {
       let timestamp = formatDistance(new Date(), date.toDate(), {
         locale: ja,
       });
-      if (timestamp.indexOf('未満') !== -1) {
-        return (timestamp = 'たった今');
-      } else {
-        return (timestamp = timestamp + '前');
-      }
+      return (timestamp = timestamp + '前');
     }
     return '';
   };

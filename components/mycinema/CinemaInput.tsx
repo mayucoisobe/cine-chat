@@ -48,7 +48,7 @@ export const CinemaInput = ({ poster, movie, type, title }: Props): JSX.Element 
     e.preventDefault();
     await sendList(user, poster, movie, title, type, text, value);
     toast({
-      title: 'マイシネマに追加',
+      title: 'マイシネマに追加されました！',
       status: 'success',
       position: 'top',
       isClosable: true,

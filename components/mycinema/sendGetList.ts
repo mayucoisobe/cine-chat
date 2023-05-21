@@ -6,7 +6,7 @@ import { db } from '../../firebase';
 async function sendList(user, poster: string, movie, title: string, type: string, text: string, value: number) {
   try {
     if (user) {
-      await addDoc(collection(db, 'mycinema', user.uid, 'user.id'), {
+      await addDoc(collection(db, 'mycinema', user.uid, 'mylist'), {
         uid: user.uid,
         src: poster,
         title: title,
@@ -29,13 +29,14 @@ function getLists(user) {
   useEffect(() => {
     if (user) {
       const unsubscribe = onSnapshot(
-        query(collection(db, 'mycinema', user.uid, 'user.id'), orderBy('timestamp', 'asc')),
+        query(collection(db, 'mycinema', user.uid, 'mylist'), orderBy('timestamp', 'asc')),
         (querySnapshot) => {
           const userLists = querySnapshot.docs.map((x) => ({
-            id: x.id,
+            docId: x.id,
             ...x.data(),
           }));
           setLists(userLists);
+          console.log(userLists);
         }
       );
 
@@ -47,5 +48,3 @@ function getLists(user) {
 }
 
 export { sendList, getLists };
-
-// x.uid === user.ui

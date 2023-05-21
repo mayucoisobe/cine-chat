@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button, Input } from '@chakra-ui/react';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { sendMessage } from './sendGetMessage';
 
@@ -18,7 +19,7 @@ export const MessageInput = ({ roomId }): JSX.Element => {
 
   return (
     <form onSubmit={handleSubmit} className="message-input-container">
-      <input
+      <Input
         type="text"
         placeholder="Enter a message"
         value={value}
@@ -27,9 +28,9 @@ export const MessageInput = ({ roomId }): JSX.Element => {
         required
         minLength={1}
       />
-      <button type="submit" disabled={value < 1} className="send-message">
+      <Button type="submit" disabled={value < 1} className="send-message">
         Send
-      </button>
+      </Button>
     </form>
   );
 };
