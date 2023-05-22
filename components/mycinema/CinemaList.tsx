@@ -1,15 +1,16 @@
 import Image from 'next/image';
 import { Button } from '@chakra-ui/react';
 import { SiQuicklook } from 'react-icons/si';
-import { RiEditLine } from 'react-icons/ri';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { getLists } from './sendGetList';
 import { StarRating } from './StarRating';
 import { DeleteModal } from './DeleteModal';
+import { UpdateModal } from './UpdateModal';
 
 export const CinemaList = (): JSX.Element => {
   const { user } = useAuthContext();
   const myLists = getLists(user);
+  console.log(myLists);
 
   return (
     <>
@@ -18,7 +19,7 @@ export const CinemaList = (): JSX.Element => {
       {myLists &&
         myLists.map((list, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="myroom">
               <p>{list.title}</p>
               <Image width="150" height="225" alt={list.title} src={list.src} />
               {list.type}
@@ -35,10 +36,8 @@ export const CinemaList = (): JSX.Element => {
               >
                 詳細
               </Button>
-              <Button onClick={() => handleEditList(id)} leftIcon={<RiEditLine />} colorScheme="pink" variant="solid">
-                編集
-              </Button>
-              <DeleteModal user={user} docId={list.docId} />
+              <UpdateModal user={user} list={list} />
+              <DeleteModal user={user} list={list} />
             </div>
           );
         })}

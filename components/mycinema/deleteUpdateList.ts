@@ -14,11 +14,11 @@ async function deleteList(user, docId: string) {
 }
 
 // 映画データを編集
-async function updateList(user, docId: string, newData) {
+async function updateList(user, docId: string, text: string, value: number) {
   try {
     if (user) {
       const listRef = doc(db, 'mycinema', user.uid, 'mylist', docId);
-      await updateDoc(listRef, newData);
+      await updateDoc(listRef, { text: text, star: value });
     }
   } catch (error) {
     console.log(error);

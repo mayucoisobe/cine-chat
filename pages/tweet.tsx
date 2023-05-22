@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { Button, Input } from '@chakra-ui/react';
 import { useAuthContext } from '@/providers/AuthProvider';
+import { AuthGuard } from '@/feature/auth/AuthGuard';
 import {
   collection,
   addDoc,
@@ -9,9 +10,7 @@ import {
   onSnapshot,
   query,
   orderBy,
-  // doc,
 } from 'firebase/firestore';
-import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { formatDistance } from 'date-fns';
 import { ja } from 'date-fns/locale';
@@ -24,7 +23,9 @@ export default function Tweet(): JSX.Element {
   };
 
   // チャットをfirebaseに追加
-  const sendPost = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const sendPost = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
     if (auth.currentUser) {
       await addDoc(collection(db, 'tweets'), {
@@ -81,25 +82,6 @@ export default function Tweet(): JSX.Element {
     return '';
   };
 
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, async (user) => {
-  //     if (user) {
-  //       const cloneGetTweet = [...getTweet];
-  //       const q = query(collection(db, 'tweets'), orderBy('createdAt', 'desc'));
-  //       onSnapshot(q, (snapshot) => {
-  //         snapshot.docChanges().forEach((change) => {
-  //           // console.log(change.doc.data());
-  //           if (change.type === 'added') {
-  //             const editedData = { ...change.doc.data(), id: change.doc.id };
-  //             cloneGetTweet.push(editedData);
-  //             setGetTweet(cloneGetTweet);
-  //           }
-  //         });
-  //       });
-  //     }
-  //   });
-  // }, []);
-
   return (
     <div>
       <Head>
@@ -108,9 +90,9 @@ export default function Tweet(): JSX.Element {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="home">
-        <h1>Tweet24</h1>
-        <main>
+      <AuthGuard>
+        <div className="home">
+          <h1>Tweet24</h1>
           <div>
             <div>
               {user &&
@@ -130,18 +112,23 @@ export default function Tweet(): JSX.Element {
                 })}
             </div>
           </div>
-        </main>
-        <form>
-          <p>
-            <Input onChange={twTextWriting} type="text" value={twtext} placeholder="Lets Tweet!" />
-          </p>
-          <p>
-            <Button onClick={sendPost} type="submit">
-              Tweetする
-            </Button>
-          </p>
-        </form>
-      </div>
+          <form>
+            <p>
+              <Input
+                onChange={twTextWriting}
+                type="text"
+                value={twtext}
+                placeholder="Lets Tweet!"
+              />
+            </p>
+            <p>
+              <Button onClick={sendPost} type="submit">
+                Tweetする
+              </Button>
+            </p>
+          </form>
+        </div>
+      </AuthGuard>
     </div>
   );
 }

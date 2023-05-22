@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Search } from './Search';
+import { SearchBar } from './SearchBar';
 import { SearchResult } from './SearchResult';
 
 type Movie = {
@@ -53,14 +53,20 @@ export const CinemaSearch = (): JSX.Element => {
 
   return (
     <>
-      <Search search={search} />
+      <SearchBar search={search} />
       <div>
         {errorMessage ? (
           <div>{errorMessage}</div>
         ) : !loading && movies.length === 0 ? (
           <span>該当するデータがありませんでした</span>
         ) : (
-          movies.map((movie, index) => <SearchResult key={`${index}-${movie.id}`} movie={movie} type={type} />)
+          movies.map((movie, index) => (
+            <SearchResult
+              key={`${index}-${movie.id}`}
+              movie={movie}
+              type={type}
+            />
+          ))
         )}
       </div>
     </>

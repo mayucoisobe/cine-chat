@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { IconButton, Select, Input } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
-export const Search = ({ search }): JSX.Element => {
+export const SearchBar = ({ search }): JSX.Element => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [selectedOption, setSelectedOption] = useState<string>('option1');
 
@@ -26,7 +26,11 @@ export const Search = ({ search }): JSX.Element => {
 
   return (
     <>
-      <Select value={selectedOption} onChange={handleSelectChange} variant="flushed">
+      <Select
+        value={selectedOption}
+        onChange={handleSelectChange}
+        variant="flushed"
+      >
         <option value="option1">Movies</option>
         <option value="option2">TV shows</option>
       </Select>
@@ -38,7 +42,12 @@ export const Search = ({ search }): JSX.Element => {
           placeholder="タイトルを入力"
           focusBorderColor="pink.400"
         />
-        <IconButton onClick={callSearchFunction} type="submit" icon={<SearchIcon />} aria-label="Search database" />
+        <IconButton
+          onClick={callSearchFunction}
+          type="submit"
+          icon={<SearchIcon />}
+          aria-label="Search database"
+        />
       </form>
     </>
   );
