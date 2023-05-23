@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Flex, IconButton, Select, Input } from '@chakra-ui/react';
+import { Flex, FormControl, IconButton, Input, Select, Text } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
 export const SearchBar = ({ search }): JSX.Element => {
@@ -26,28 +26,23 @@ export const SearchBar = ({ search }): JSX.Element => {
 
   return (
     <>
-      <Select
-        value={selectedOption}
-        onChange={handleSelectChange}
-        variant="flushed"
-      >
+      <Text>movies or tv shows?</Text>
+      <Select value={selectedOption} onChange={handleSelectChange}>
         <option value="option1">Movies</option>
         <option value="option2">TV shows</option>
       </Select>
       <form>
-        <Input
-          value={searchValue}
-          onChange={handleInputChange}
-          type="text"
-          placeholder="タイトルを入力"
-          focusBorderColor="pink.400"
-        />
-        <IconButton
-          onClick={callSearchFunction}
-          type="submit"
-          icon={<SearchIcon />}
-          aria-label="Search database"
-        />
+        <Flex>
+          <Input
+            value={searchValue}
+            onChange={handleInputChange}
+            type="text"
+            placeholder="タイトルを入力"
+            variant="flushed"
+            focusBorderColor="pink.400"
+          />
+          <IconButton onClick={callSearchFunction} type="submit" icon={<SearchIcon />} aria-label="Search database" />
+        </Flex>
       </form>
     </>
   );

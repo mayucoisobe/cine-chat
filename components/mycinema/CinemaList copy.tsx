@@ -28,6 +28,7 @@ export const CinemaList = (): JSX.Element => {
               <CardHeader>
                 <Flex spacing="4">
                   <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
+                    <Avatar name="Segun Adebayo" src={user.photoURL} />
                     <Box>
                       <Heading size="sm">{list.title}</Heading>
                       <StarRating value={list.star} />

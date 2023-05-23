@@ -16,8 +16,8 @@ import {
   useToast,
   Icon,
 } from '@chakra-ui/react';
-import { AddIcon } from '@chakra-ui/icons';
-import { MdOutlineAddCircle } from 'react-icons/md';
+import { SmallAddIcon } from '@chakra-ui/icons';
+import { GrAdd } from 'react-icons/gr';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { StarRating } from './StarRating';
 import { sendList } from './sendGetList';
@@ -29,12 +29,7 @@ type Props = {
   title: string;
 };
 
-export const InputModal = ({
-  poster,
-  movie,
-  type,
-  title,
-}: Props): JSX.Element => {
+export const InputModal = ({ poster, movie, type, title }: Props): JSX.Element => {
   const { user } = useAuthContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = useRef(null);
@@ -52,9 +47,7 @@ export const InputModal = ({
 
   // 映画を登録する
   // e: React.ChangeEvent<HTMLInputElement>
-  const handleSubmit = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     await sendList(user, poster, movie, title, type, text, value);
     toast({
@@ -73,8 +66,8 @@ export const InputModal = ({
       {(user === null || user === undefined) && <PopoverCo />}
       {user && (
         <>
-          <Button onClick={onOpen} rounded="full" width={5} colorScheme="green">
-            <AddIcon />
+          <Button onClick={onOpen} width={5} colorScheme="gray">
+            <SmallAddIcon />
           </Button>
           <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
@@ -83,28 +76,14 @@ export const InputModal = ({
               <ModalCloseButton />
               <ModalBody pb={6}>
                 <Flex>
-                  <Image
-                    width="150"
-                    height="225"
-                    src={poster}
-                    alt="poster-image"
-                  />
+                  <Image width="150" height="225" src={poster} alt="poster-image" />
                   <div>
                     <h2>{title}</h2>
-                    <StarRating
-                      value={value}
-                      setValue={setValue}
-                      onChange={onChange}
-                    />
+                    <StarRating value={value} setValue={setValue} onChange={onChange} />
                   </div>
                 </Flex>
                 <FormControl mt={4}>
-                  <Textarea
-                    onChange={handleChange}
-                    type="text"
-                    value={text}
-                    placeholder="memo"
-                  />
+                  <Textarea onChange={handleChange} type="text" value={text} placeholder="memo" />
                 </FormControl>
               </ModalBody>
               <ModalFooter>
