@@ -9,11 +9,13 @@ import {
   DrawerContent,
   DrawerOverlay,
   Flex,
+  Icon,
   IconButton,
   useDisclosure,
   useToast,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
+import { BiCameraMovie } from 'react-icons/bi';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { auth } from '../firebase';
 import { signOut } from 'firebase/auth';
@@ -50,9 +52,10 @@ export const Header = (): JSX.Element => {
     <>
       <header>
         <Flex justifyContent="space-between" alignItems="center" gap="60px" height="80px" className="container">
-          <Box as="h1" className="font-ttl">
-            CINEMY==ROOM
-          </Box>
+          <Flex alignItems="center" gap="2">
+            <Icon as={BiCameraMovie} w={8} h={8} />
+            <Box className="font-ttl">CINEMY==ROOM</Box>
+          </Flex>
           <nav>
             <Flex as="ul" display={{ base: 'none', md: 'flex' }}>
               <li>

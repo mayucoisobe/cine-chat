@@ -31,14 +31,9 @@ export const DeleteModal = ({ user, list }: JSX.Element) => {
 
   return (
     <>
-      <Button
-        leftIcon={<RiDeleteBin2Fill />}
-        colorScheme="gray"
-        onClick={onOpen}
-      >
+      <Button leftIcon={<RiDeleteBin2Fill />} colorScheme="gray" onClick={onOpen}>
         削除
       </Button>
-
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

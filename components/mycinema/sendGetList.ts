@@ -1,9 +1,18 @@
 import { useEffect, useState } from 'react';
 import { collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { GlobalAuthState } from '@/providers/AuthProvider';
 
 // 映画データをfirebaseに追加
-async function sendList(user, poster: string, movie, title: string, type: string, text: string, value: number) {
+async function sendList(
+  user: GlobalAuthState,
+  poster: string,
+  movie,
+  title: string,
+  type: string,
+  text: string,
+  value: number
+) {
   try {
     if (user) {
       await addDoc(collection(db, 'mycinema', user.uid, 'mylist'), {
@@ -23,7 +32,7 @@ async function sendList(user, poster: string, movie, title: string, type: string
 }
 
 // 映画データをfirebaseから取得
-function getLists(user) {
+function getLists(user: GlobalAuthState) {
   const [lists, setLists] = useState([]);
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Button } from '@chakra-ui/react';
-import { SiQuicklook } from 'react-icons/si';
+import { BiMoviePlay } from 'react-icons/bi';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { getLists } from './sendGetList';
 import { StarRating } from './StarRating';
@@ -26,7 +26,7 @@ export const CinemaList = (): JSX.Element => {
               <StarRating value={list.star} />
               <p>{list.text}</p>
               <Button
-                leftIcon={<SiQuicklook />}
+                leftIcon={<BiMoviePlay />}
                 colorScheme="green"
                 variant="solid"
                 as="a"

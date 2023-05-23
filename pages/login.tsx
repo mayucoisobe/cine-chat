@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { GoogleAuthProvider, signInWithPopup, UserCredential } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 import { auth } from '../firebase';
+import { Button, Center, Container, Image, Heading } from '@chakra-ui/react';
 
 export default function Login(): JSX.Element {
   const { push } = useRouter();
@@ -29,10 +30,16 @@ export default function Login(): JSX.Element {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <h1>ログインページ</h1>
-        <button onClick={loginWithGoogle}>Googleアカウントでログイン</button>
-      </div>
+      <Container>
+        <Center>
+          <Heading as="h1">ログイン</Heading>
+        </Center>
+
+        <Button onClick={loginWithGoogle} variant="outline" py={6}>
+          <Image boxSize="20px" objectFit="cover" alt="google" src="/google-icon.svg" mr={2}></Image>
+          Googleアカウントでログインする
+        </Button>
+      </Container>
     </div>
   );
 }

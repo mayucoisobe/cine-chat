@@ -8,20 +8,23 @@ import {
   PopoverCloseButton,
   Button,
 } from '@chakra-ui/react';
+import { AddIcon } from '@chakra-ui/icons';
 
 export const PopoverCo = ({ props }: JSX.Element) => {
   return (
     <>
       <Popover>
         <PopoverTrigger>
-          <Button>Trigger</Button>
+          <Button>
+            <AddIcon />
+          </Button>
         </PopoverTrigger>
         <PopoverContent>
           <PopoverArrow />
           <PopoverCloseButton />
-          <PopoverHeader>Confirmation!</PopoverHeader>
+          <PopoverHeader>Please Note!</PopoverHeader>
           <PopoverBody>
-            Are you sure you want to have that milkshake?
+            <span>マイルームに追加するにはログインが必要です！</span>
           </PopoverBody>
         </PopoverContent>
       </Popover>

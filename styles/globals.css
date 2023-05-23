@@ -30,8 +30,10 @@ chakra uiと併用のcss
 .fwb {
   font-weight: bold;
 }
+/* Headingタグを使うと、_appで設定しているZenMaruになるため、気をつける！ */
 .font-ttl {
-  font-family: 'Darumadrop One', cursive;
+  font-family: 'Darumadrop One';
+  font-size: 2rem;
 }
 .message.own-message {
   text-align: right;
