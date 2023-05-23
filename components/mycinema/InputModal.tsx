@@ -2,6 +2,9 @@ import Image from 'next/image';
 import { useRef, useState } from 'react';
 import {
   Button,
+  FormControl,
+  Flex,
+  Heading,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -9,12 +12,9 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  useDisclosure,
-  FormControl,
-  Flex,
   Textarea,
+  useDisclosure,
   useToast,
-  Icon,
 } from '@chakra-ui/react';
 import { SmallAddIcon } from '@chakra-ui/icons';
 import { GrAdd } from 'react-icons/gr';
@@ -78,7 +78,7 @@ export const InputModal = ({ poster, movie, type, title }: Props): JSX.Element =
                 <Flex>
                   <Image width="150" height="225" src={poster} alt="poster-image" />
                   <div>
-                    <h2>{title}</h2>
+                    <Heading size="md">{title}</Heading>
                     <StarRating value={value} setValue={setValue} onChange={onChange} />
                   </div>
                 </Flex>

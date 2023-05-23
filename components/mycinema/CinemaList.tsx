@@ -59,8 +59,10 @@ export const CinemaList = (): JSX.Element => {
                   },
                 }}
               >
-                <Button flex="1">Like</Button>
-                <Button flex="1">Comment</Button>
+                {/* <Button flex="1">Like</Button>
+                <Button flex="1">Comment</Button> */}
+                <UpdateModal user={user} list={list} />
+                <DeleteModal user={user} list={list} />
                 <Button flex="1">Share</Button>
               </CardFooter>
             </Card>
