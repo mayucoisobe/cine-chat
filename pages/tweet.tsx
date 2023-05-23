@@ -77,7 +77,11 @@ export default function Tweet(): JSX.Element {
       let timestamp = formatDistance(new Date(), date.toDate(), {
         locale: ja,
       });
-      return (timestamp = timestamp + '前');
+      if (timestamp.indexOf('未満') !== -1) {
+        return (timestamp = 'たった今');
+      } else {
+        return (timestamp = timestamp + '前');
+      }
     }
     return '';
   };

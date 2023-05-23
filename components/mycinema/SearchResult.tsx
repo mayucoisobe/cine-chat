@@ -1,5 +1,15 @@
 import Image from 'next/image';
-import { StarIcon } from '@chakra-ui/icons';
+import {
+  Stack,
+  Card,
+  CardBody,
+  CardFooter,
+  Heading,
+  Button,
+  Text,
+  Icon,
+} from '@chakra-ui/react';
+import { FaGrinStars } from 'react-icons/fa';
 import { InputModal } from './InputModal';
 
 type Props = {
@@ -32,9 +42,47 @@ export const SearchResult = ({ movie, type }: Props): JSX.Element => {
 
   return (
     <div>
-      <h2>{title}</h2>
+      <Card
+        direction={{ base: 'column', sm: 'row' }}
+        overflow="hidden"
+        variant="outline"
+      >
+        <a
+          href={`https://www.themoviedb.org/${type}/${movie.id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image width="150" height="225" alt={`${movie.title}`} src={poster} />
+        </a>
+        <Stack>
+          <CardBody>
+            <Heading size="md">{title}</Heading>
+            <Text pt="2">{date}</Text>
+            <Text>
+              review
+              <Icon as={FaGrinStars} w={5} h={5} color="green.400" />
+              {Math.round(movie.vote_average * 10) / 10}
+            </Text>
+          </CardBody>
+          <CardFooter>
+            <InputModal
+              poster={poster}
+              movie={movie}
+              type={type}
+              title={title}
+            />
+          </CardFooter>
+        </Stack>
+      </Card>
+    </div>
+  );
+};
+
+{
+  /* <h2>{title}</h2>
       <p> {date}</p>
       <p>
+        review
         <StarIcon color="yellow.300" />
         {Math.round(movie.vote_average * 10) / 10}
       </p>
@@ -45,7 +93,5 @@ export const SearchResult = ({ movie, type }: Props): JSX.Element => {
       >
         <Image width="150" height="225" alt={`${movie.title}`} src={poster} />
       </a>
-      <InputModal poster={poster} movie={movie} type={type} title={title} />
-    </div>
-  );
-};
+      <InputModal poster={poster} movie={movie} type={type} title={title} /> */
+}

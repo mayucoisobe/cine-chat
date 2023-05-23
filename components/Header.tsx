@@ -51,13 +51,21 @@ export const Header = (): JSX.Element => {
   return (
     <>
       <header>
-        <Flex justifyContent="space-between" alignItems="center" gap="60px" height="80px" className="container">
+        <Flex
+          justifyContent="space-between"
+          alignItems="center"
+          gap="60px"
+          height="80px"
+          className="container"
+        >
           <Flex alignItems="center" gap="2">
             <Icon as={BiCameraMovie} w={8} h={8} />
-            <Box className="font-ttl">CINEMY==ROOM</Box>
+            <Box className="font-ttl">
+              <Link href="/">CINEMY==ROOM</Link>
+            </Box>
           </Flex>
           <nav>
-            <Flex as="ul" display={{ base: 'none', md: 'flex' }}>
+            <Flex as="ul" gap={3} display={{ base: 'none', md: 'flex' }}>
               <li>
                 <Link href="/">ChatRoom</Link>
               </li>
@@ -68,25 +76,45 @@ export const Header = (): JSX.Element => {
                 <Link href="/myroom">MyRoom</Link>
               </li>
               <li>
-                <Link href="/myroom/search">検索</Link>
+                <Link href="/myroom/search">Search</Link>
               </li>
-              <li>{user ? <p onClick={logOut}>Logout</p> : <Link href="/login">Login</Link>}</li>
+              <li>
+                {user ? (
+                  <p onClick={logOut}>Logout</p>
+                ) : (
+                  <Link href="/login">Login</Link>
+                )}
+              </li>
             </Flex>
           </nav>
-          <IconButton icon={<HamburgerIcon />} display={{ base: 'block', md: 'none' }} onClick={onOpen} />
+          <IconButton
+            icon={<HamburgerIcon />}
+            display={{ base: 'block', md: 'none' }}
+            onClick={onOpen}
+          />
         </Flex>
         <Drawer placement="left" size="xs" onClose={onClose} isOpen={isOpen}>
           <DrawerOverlay>
             <DrawerContent>
               <DrawerBody p={0}>
-                <Button w="100%" justifyContent="flex-start">
-                  <Link href="/">TOP</Link>
+                <Button w="100%" justifyContent="flex-start" onClick={onClose}>
+                  <Link href="/">ChatRoom</Link>
                 </Button>
-                <Button w="100%" justifyContent="flex-start">
+                <Button w="100%" justifyContent="flex-start" onClick={onClose}>
                   <Link href="/tweet">Tweet24</Link>
                 </Button>
-                <Button w="100%" justifyContent="flex-start">
-                  {user ? <p onClick={logOut}>Logout</p> : <Link href="/login">Login</Link>}
+                <Button w="100%" justifyContent="flex-start" onClick={onClose}>
+                  <Link href="/myroom">MyRoom</Link>
+                </Button>
+                <Button w="100%" justifyContent="flex-start" onClick={onClose}>
+                  <Link href="/myroom/search">Search</Link>
+                </Button>
+                <Button w="100%" justifyContent="flex-start" onClick={onClose}>
+                  {user ? (
+                    <p onClick={logOut}>Logout</p>
+                  ) : (
+                    <Link href="/login">Login</Link>
+                  )}
                 </Button>
               </DrawerBody>
             </DrawerContent>

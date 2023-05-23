@@ -46,7 +46,12 @@ export const UpdateModal = ({ user, list }: JSX.Element) => {
 
   return (
     <>
-      <Button leftIcon={<RiEditLine />} colorScheme="pink" onClick={onOpen}>
+      <Button
+        leftIcon={<RiEditLine />}
+        colorScheme="green"
+        variant="outline"
+        onClick={onOpen}
+      >
         編集
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -82,7 +87,7 @@ export const UpdateModal = ({ user, list }: JSX.Element) => {
                 キャンセル
               </Button>
               <Button
-                colorScheme="red"
+                colorScheme="green"
                 onClick={() => {
                   handleUpdateList(list.docId);
                   onClose();

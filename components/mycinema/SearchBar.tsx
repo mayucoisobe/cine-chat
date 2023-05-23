@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IconButton, Select, Input } from '@chakra-ui/react';
+import { Flex, IconButton, Select, Input } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
 export const SearchBar = ({ search }): JSX.Element => {

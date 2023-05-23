@@ -1,9 +1,21 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { GoogleAuthProvider, signInWithPopup, UserCredential } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  UserCredential,
+} from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 import { auth } from '../firebase';
-import { Button, Center, Container, Image, Heading } from '@chakra-ui/react';
+import {
+  Button,
+  Box,
+  Container,
+  Image,
+  Heading,
+  AbsoluteCenter,
+  Center,
+} from '@chakra-ui/react';
 
 export default function Login(): JSX.Element {
   const { push } = useRouter();
@@ -31,14 +43,25 @@ export default function Login(): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <Center>
-          <Heading as="h1">ログイン</Heading>
-        </Center>
-
-        <Button onClick={loginWithGoogle} variant="outline" py={6}>
-          <Image boxSize="20px" objectFit="cover" alt="google" src="/google-icon.svg" mr={2}></Image>
-          Googleアカウントでログインする
-        </Button>
+        <Box position="relative" height={`calc(100vh - 80px)`}>
+          <AbsoluteCenter>
+            <Center>
+              <Heading as="h1" mb={5}>
+                ログイン
+              </Heading>
+            </Center>
+            <Button onClick={loginWithGoogle} variant="outline" py={6}>
+              <Image
+                boxSize="20px"
+                objectFit="cover"
+                alt="google"
+                src="/google-icon.svg"
+                mr={2}
+              ></Image>
+              Googleアカウントでログインする
+            </Button>
+          </AbsoluteCenter>
+        </Box>
       </Container>
     </div>
   );
