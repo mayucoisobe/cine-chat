@@ -1,5 +1,16 @@
 import Image from 'next/image';
-import { Avatar, Button, Box, Card, CardHeader, CardBody, CardFooter, Flex, Text, Heading } from '@chakra-ui/react';
+import {
+  Avatar,
+  Button,
+  Box,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Flex,
+  Text,
+  Heading,
+} from '@chakra-ui/react';
 import { BiMoviePlay } from 'react-icons/bi';
 import { RiMovie2Fill } from 'react-icons/ri';
 import { useAuthContext } from '@/providers/AuthProvider';
@@ -24,7 +35,7 @@ export const CinemaList = (): JSX.Element => {
       {myLists &&
         myLists.map((list, index) => {
           return (
-            <Card maxW="md" key={index} className="myroom">
+            <Card maxW="md" key={index} className="myroom" px={10}>
               <CardHeader>
                 <Flex spacing="4">
                   <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
@@ -38,10 +49,17 @@ export const CinemaList = (): JSX.Element => {
               <CardBody>
                 <Text>{list.text}</Text>
               </CardBody>
-              <Image objectFit="cover" width="150" height="225" alt={list.title} src={list.src} />
+              <Image
+                objectFit="cover"
+                width="150"
+                height="225"
+                alt={list.title}
+                src={list.src}
+              />
               <Button
                 leftIcon={<BiMoviePlay />}
                 colorScheme="green"
+                // colorScheme="cinema.200"
                 variant="solid"
                 as="a"
                 target="_blank"
@@ -59,11 +77,12 @@ export const CinemaList = (): JSX.Element => {
                   },
                 }}
               >
-                <Button flex="1">Like</Button>
-                <Button flex="1">Comment</Button>
+                <UpdateModal flex="1" user={user} list={list} />
+                <DeleteModal flex="1" user={user} list={list} />
                 <Button flex="1">Share</Button>
               </CardFooter>
             </Card>
+
             // <Box key={index} className="myroom">
             //   <Text>{list.title}</Text>
             //   <Image width="150" height="225" alt={list.title} src={list.src} />
