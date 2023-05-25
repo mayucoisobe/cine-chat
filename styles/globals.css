@@ -1,5 +1,7 @@
 :root {
-  --primary-color: ;
+  --primary-color: #010601;
+  --secondary-color: #731c01;
+  --tertiary-color: #d28c07;
 }
 *,
 *::before,
@@ -41,10 +43,22 @@ chakra uiと併用のcss
 .stars {
   display: flex;
 }
-.myroom .stars {
+.chakra-card.myroom .stars {
   pointer-events: none;
 }
 
+.chakra-card.myroom {
+  background-image: url(/frame.svg), url(/frame.svg);
+  background-repeat: repeat-y, repeat-y;
+  background-position: left, right;
+  background-size: 8%;
+}
+
+@media (min-width: 576px) {
+  .chakra-card.myroom {
+    background-size: auto%;
+  }
+}
 /* ====================
 
 screen page
@@ -73,7 +87,8 @@ screen page
   left: 0;
   padding-left: 100px;
   opacity: 0.08;
-  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/662025/scratch.png') repeat center center;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/662025/scratch.png')
+    repeat center center;
   -webkit-animation: scratch 0.45s steps(1) infinite;
   animation: scratch 0.45s steps(1) infinite;
 }
@@ -90,7 +105,8 @@ screen page
   top: -5%;
   left: -5%;
   opacity: 0.11;
-  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/662025/grain.jpg') repeat center center;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/662025/grain.jpg')
+    repeat center center;
   -webkit-animation: grain 0.5s steps(1) infinite;
   animation: grain 0.5s steps(1) infinite;
 }

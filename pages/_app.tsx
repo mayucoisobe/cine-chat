@@ -12,6 +12,17 @@ export default function App({ Component, pageProps }: AppProps) {
           heading: "'Zen Maru Gothic', sans-serif;",
           body: "'Zen Maru Gothic', sans-serif;",
         },
+        colors: {
+          brand: {
+            100: '#010601',
+            200: '#731C01',
+            300: '#D28C07',
+          },
+          // withDefaultColorScheme({
+          //   colorScheme: "brand",
+          //   components: ["Button", "table"],
+          // })
+        },
       })}
     >
       <AuthProvider>
