@@ -3,6 +3,9 @@ import { useState } from 'react';
 import {
   Button,
   ButtonGroup,
+  Flex,
+  FormControl,
+  Icon,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -10,10 +13,8 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  useDisclosure,
-  FormControl,
-  Flex,
   Textarea,
+  useDisclosure,
   useToast,
 } from '@chakra-ui/react';
 import { RiEditLine } from 'react-icons/ri';
@@ -46,13 +47,9 @@ export const UpdateModal = ({ user, list }: JSX.Element) => {
 
   return (
     <>
-      <Button
-        leftIcon={<RiEditLine />}
-        colorScheme="green"
-        variant="outline"
-        onClick={onOpen}
-      >
-        編集
+      <Button colorScheme="brand" onClick={onOpen} p={0}>
+        <Icon as={RiEditLine} w={5} h={5} color="brand.200" />
+        {/* 編集 */}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -60,25 +57,17 @@ export const UpdateModal = ({ user, list }: JSX.Element) => {
           <ModalHeader>編集画面</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            変更内容を保存しますか？{list.docId}
+            変更内容を保存しますか？
+            {/* {list.docId} */}
             <Flex>
               <Image width="150" height="225" alt={list.title} src={list.src} />
               <div>
                 <h2>{list.title}</h2>
-                <StarRating
-                  value={value}
-                  setValue={setValue}
-                  onChange={onChange}
-                />
+                <StarRating value={value} size={20} setValue={setValue} onChange={onChange} />
               </div>
             </Flex>
             <FormControl mt={4}>
-              <Textarea
-                onChange={handleChange}
-                type="text"
-                value={text}
-                placeholder="pls edit here"
-              />
+              <Textarea onChange={handleChange} type="text" value={text} placeholder="pls edit here" />
             </FormControl>
           </ModalBody>
           <ModalFooter>

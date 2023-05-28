@@ -1,7 +1,7 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { RouteModule } from 'next/dist/server/future/route-modules/route-module';
 import Head from 'next/head';
 import Link from 'next/link';
+import { Box, Container, Heading, Text } from '@chakra-ui/react';
 import { MessageInput } from '../../components/MessageInput';
 import { MessageList } from '../../components/MessageList';
 // import { useRouter } from 'next/router';
@@ -10,9 +10,7 @@ import { MessageList } from '../../components/MessageList';
 type StatusPageProps = { id: string };
 
 // サーバーサイドでの前処理を行う関数
-export const getServerSideProps: GetServerSideProps<StatusPageProps> = async (
-  context
-) => {
+export const getServerSideProps: GetServerSideProps<StatusPageProps> = async (context) => {
   // context経由でブラウザから送信されたパラメーターを受け取る
   const { id } = context.query;
 
@@ -31,14 +29,18 @@ const ChatRoomPage: NextPage<StatusPageProps> = (props) => {
         <title>{title}</title>
         <meta property="og:title" content={title} key="ogtitle" />
       </Head>
-      <h2>{props.id}の部屋</h2>
-      <div>
-        <Link href="/">← Back to home</Link>
-      </div>
-      <div>
-        <MessageList roomId={props.id} />
-        <MessageInput roomId={props.id} />
-      </div>
+      <Container>
+        <Heading align="center">{props.id}の部屋</Heading>
+        <Box>
+          <Text>
+            <Link href="/">← Back to home</Link>
+          </Text>
+        </Box>
+        <Box>
+          <MessageList roomId={props.id} />
+          <MessageInput roomId={props.id} />
+        </Box>
+      </Container>
     </>
   );
 };

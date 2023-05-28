@@ -3,14 +3,7 @@ import { useEffect, useState } from 'react';
 import { Button, Input } from '@chakra-ui/react';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { AuthGuard } from '@/feature/auth/AuthGuard';
-import {
-  collection,
-  addDoc,
-  serverTimestamp,
-  onSnapshot,
-  query,
-  orderBy,
-} from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import { formatDistance } from 'date-fns';
 import { ja } from 'date-fns/locale';
@@ -23,9 +16,7 @@ export default function Tweet(): JSX.Element {
   };
 
   // チャットをfirebaseに追加
-  const sendPost = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const sendPost = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     if (auth.currentUser) {
       await addDoc(collection(db, 'tweets'), {
@@ -123,6 +114,8 @@ export default function Tweet(): JSX.Element {
                 type="text"
                 value={twtext}
                 placeholder="Lets Tweet!"
+                required
+                minLength={1}
               />
             </p>
             <p>

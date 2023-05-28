@@ -1,7 +1,21 @@
 import Image from 'next/image';
-import { Avatar, Button, Box, Card, CardHeader, CardBody, CardFooter, Flex, Text, Heading } from '@chakra-ui/react';
-import { BiMoviePlay } from 'react-icons/bi';
-import { RiMovie2Fill } from 'react-icons/ri';
+import {
+  Button,
+  Box,
+  Card,
+  CardBody,
+  CardFooter,
+  Center,
+  Container,
+  Flex,
+  Heading,
+  Icon,
+  Stack,
+  Text,
+} from '@chakra-ui/react';
+import styles from '../../styles/cinemaList.module.css';
+
+import { RiMovie2Line } from 'react-icons/ri';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { getLists } from './sendGetList';
 import { StarRating } from './StarRating';
@@ -14,81 +28,125 @@ export const CinemaList = (): JSX.Element => {
   console.log(myLists, user);
 
   return (
-    <>
-      {user && (
-        <Heading as="h1" size="md">
-          {user.displayName}さんのmyroom
-        </Heading>
-      )}
-      {myLists.length === 0 && <Text>まだマイリストがありません</Text>}
-      {myLists &&
-        myLists.map((list, index) => {
-          return (
-            <Card maxW="md" key={index} className="myroom" px={10}>
-              <CardHeader>
-                <Flex spacing="4">
-                  <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                    <Box>
-                      <Heading size="sm">{list.title}</Heading>
-                      <StarRating value={list.star} />
-                    </Box>
-                  </Flex>
-                </Flex>
-              </CardHeader>
-              <CardBody>
-                <Text>{list.text}</Text>
-              </CardBody>
-              <Image objectFit="cover" width="150" height="225" alt={list.title} src={list.src} />
-              <Button
-                leftIcon={<BiMoviePlay />}
-                colorScheme="green"
-                // colorScheme="cinema.200"
-                variant="solid"
-                as="a"
-                target="_blank"
-                rel="noopener noreferrer"
-                href={`https://www.themoviedb.org/${list.type}/${list.id}`}
+    <Container maxW="md">
+      <>
+        <Box
+          borderColor="brand.100"
+          borderTopWidth="16px"
+          borderBottomWidth="16px"
+          className={`${styles.cinelist} myroom`}
+        >
+          <Card bg="brand.200" borderRadius="xl" color="brand.100" maxW="md" p={2}>
+            <Center pos="relative" w="100%">
+              <Box className={styles.cross}></Box>
+              <Box
+                border="4px"
+                borderColor="brand.100"
+                borderRadius="full"
+                pt="70%"
+                w="70%"
+                className={styles.round}
+              ></Box>
+            </Center>
+            <Heading as="h1" align="center" lineHeight="none" size="lg" pos="absolute" className={styles.centerPo}>
+              {user.displayName}
+              <br></br>
+              <Text as="span" fontSize="12px">
+                さんの
+              </Text>
+              <br></br>myroom
+            </Heading>
+          </Card>
+        </Box>
+        {myLists.length === 0 && (
+          <Text align="center" mt={10}>
+            まだリストがありません
+          </Text>
+        )}
+        {myLists.length !== 0 &&
+          myLists.map((list, index) => {
+            return (
+              <Box
+                borderColor="brand.100"
+                borderTopWidth="16px"
+                borderBottomWidth="16px"
+                className={`${styles.cinelist} myroom`}
               >
-                詳細
-              </Button>
-              <CardFooter
-                justify="space-between"
-                flexWrap="wrap"
-                sx={{
-                  '& > button': {
-                    minW: '136px',
-                  },
-                }}
-              >
-                {/* <Button flex="1">Like</Button>
-                <Button flex="1">Comment</Button> */}
-                <UpdateModal user={user} list={list} />
-                <DeleteModal user={user} list={list} />
-                <Button flex="1">Share</Button>
-              </CardFooter>
-            </Card>
-
-            // <Box key={index} className="myroom">
-            //   <Text>{list.title}</Text>
-            //   <Image width="150" height="225" alt={list.title} src={list.src} />
-            //   <StarRating value={list.star} />
-            //   <Text>{list.text}</Text>
-            //   <Button
-            //     leftIcon={<BiMoviePlay />}
-            //     colorScheme="green"
-            //     variant="solid"
-            //     as="a"
-            //     target="_blank"
-            //     rel="noopener noreferrer"
-            //     href={`https://www.themoviedb.org/${list.type}/${list.id}`}
-            //   >
-            //     詳細
-            //   </Button>
-            //   <UpdateModal user={user} list={list} />
-            //   <DeleteModal user={user} list={list} />
-            // </Box>
-          );
-        })}
-    </>
+                <Card
+                  key={index}
+                  bg="brand.200"
+                  borderRadius="xl"
+                  direction="row"
+                  gap={3}
+                  justify="space-between"
+                  maxW="md"
+                  px={2}
+                  py={4}
+                >
+                  <Box pos="relative" w="50%">
+                    <Image
+                      alt={list.title}
+                      src={list.src}
+                      width={500}
+                      height={750}
+                      sizes="100vw"
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                      }}
+                      // fill
+                      // sizes="100vw"
+                      // style={{
+                      //   objectFit: 'contain',
+                      // }}
+                    ></Image>
+                    <Button
+                      as="a"
+                      // colorScheme="green"
+                      bottom={0}
+                      left={0}
+                      variant="solid"
+                      opacity="0.8"
+                      p={0}
+                      pos="absolute"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      href={`https://www.themoviedb.org/${list.type}/${list.id}`}
+                    >
+                      <Icon as={RiMovie2Line} w={5} h={5} />
+                    </Button>
+                  </Box>
+                  <Stack w="50%">
+                    <CardBody p={0}>
+                      <Heading size="sm" color="brand.300" mb={1} className={styles.tec2}>
+                        {list.title}
+                      </Heading>
+                      <StarRating value={list.star} size={14} />
+                      <Text fontSize="xs" pt={1} className={styles.tec2}>
+                        {list.text}
+                      </Text>
+                    </CardBody>
+                    <CardFooter
+                      // justify="space-between"
+                      flexWrap="wrap"
+                      gap={2}
+                      sx={{
+                        '& > button': {
+                          minW: '40px',
+                        },
+                      }}
+                      px={0}
+                      py={0}
+                    >
+                      <UpdateModal flex="1" user={user} list={list} />
+                      <DeleteModal flex="1" user={user} list={list} />
+                    </CardFooter>
+                  </Stack>
+                </Card>
+              </Box>
+            );
+          })}
+      </>
+    </Container>
   );
 };

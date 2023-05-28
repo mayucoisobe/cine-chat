@@ -1,0 +1,54 @@
+.cinelist {
+  background-image: url(/frame-left.svg), url(/frame-right.svg);
+  background-repeat: repeat-y, repeat-y;
+  /* background-repeat: no-repeat; */
+  background-position: left, right;
+  background-size: 12vw;
+  background-color: var(--primary-color);
+  padding: 0 12vw;
+}
+
+@media (min-width: 576px) {
+  .cinelist {
+    background-size: 10vw;
+  }
+}
+
+.cross {
+  position: absolute;
+  width: 1px; /* 縦棒の幅 */
+  height: 100%; /* 縦棒の長さ */
+  background: var(--primary-color); /* 縦棒の色 */
+}
+
+.cross::after {
+  content: '';
+  position: absolute;
+  top: 50%; /* 横棒のy位置 */
+  left: 50%; /* 横棒のX位置 */
+  transform: translate(-50%, -50%); /* 中央に配置 */
+  width: calc(100vw - 32px - 20vw); /* 横棒の長さ */
+  height: 1px; /* 横棒の幅 */
+  background: var(--primary-color); /* 縦棒の色 */
+}
+
+.round {
+  box-sizing: content-box;
+}
+
+.centerPo {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 中央に配置 */
+}
+
+.tec2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.chakra-button__icon {
+  padding-left: 0.5rem;
+}

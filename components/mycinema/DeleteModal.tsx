@@ -2,6 +2,7 @@ import Image from 'next/image';
 import {
   Button,
   ButtonGroup,
+  Icon,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -12,7 +13,7 @@ import {
   useDisclosure,
   useToast,
 } from '@chakra-ui/react';
-import { RiDeleteBin2Fill } from 'react-icons/ri';
+import { BsTrash3Fill } from 'react-icons/bs';
 import { deleteList } from './deleteUpdateList';
 
 export const DeleteModal = ({ user, list }: JSX.Element) => {
@@ -31,8 +32,9 @@ export const DeleteModal = ({ user, list }: JSX.Element) => {
 
   return (
     <>
-      <Button leftIcon={<RiDeleteBin2Fill />} colorScheme="gray" onClick={onOpen}>
-        削除
+      <Button colorScheme="brand" onClick={onOpen} p={0}>
+        <Icon as={BsTrash3Fill} w={5} h={5} color="brand.200" />
+        {/* 削除 */}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

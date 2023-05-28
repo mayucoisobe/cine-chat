@@ -20,13 +20,13 @@ export const MessageInput = ({ roomId }): JSX.Element => {
   return (
     <form onSubmit={handleSubmit} className="message-input-container">
       <Input
-        type="text"
-        placeholder="Enter a message"
-        value={value}
         onChange={handleChange}
-        className="message-input"
+        type="text"
+        value={value}
+        placeholder="Enter a message"
         required
         minLength={1}
+        className="message-input"
       />
       <Button type="submit" disabled={value < 1} className="send-message">
         Send

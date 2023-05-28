@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef } from 'react';
+import { Avatar, Box, Heading, Text, WrapItem } from '@chakra-ui/react';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { useMessages } from '../hooks/useMessages';
 import { formatDistance } from 'date-fns';
@@ -19,13 +20,13 @@ export const MessageList = ({ roomId }): JSX.Element => {
   });
 
   return (
-    <div ref={containerRef}>
-      <ul>
+    <Box ref={containerRef}>
+      <Box>
         {messages.map((x) => (
           <Message key={x.id} message={x} isOwnMessage={x.uid === user.uid} />
         ))}
-      </ul>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
@@ -49,12 +50,22 @@ const time = (date: Timestamp | null) => {
 };
 
 function Message({ message, isOwnMessage }) {
-  const { displayName, text, timestamp } = message;
+  const { displayName, photoURL, text, timestamp } = message;
   return (
-    <li className={['message', isOwnMessage && 'own-message'].join(' ')}>
-      <h4 className="sender">{isOwnMessage ? '👤 You' : `🎞${displayName}`}</h4>
-      <div>💋{text}</div>
-      <span>{time(timestamp)}</span>
-    </li>
+    <Box className={['message', isOwnMessage && 'own-message'].join(' ')}>
+      {/* <p>
+        <Image width={40} height={40} src={photoURL} alt="avatar" borderRadius="full" />
+      </p> */}
+      <WrapItem>
+        <Avatar size="md" name={displayName} src={photoURL} />
+      </WrapItem>
+      <Heading as="h4" size="sm" className="sender">
+        {isOwnMessage ? 'You' : `${displayName}`}
+      </Heading>
+      <Text as="span" fontSize="10px">
+        {time(timestamp)}
+      </Text>
+      <Text>{text}</Text>
+    </Box>
   );
 }

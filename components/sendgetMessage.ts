@@ -7,6 +7,7 @@ async function sendMessage(roomId, user, text) {
     await addDoc(collection(db, 'chatrooms', roomId, 'messages'), {
       uid: user.uid,
       displayName: user.displayName,
+      photoURL: user.photoURL,
       timestamp: serverTimestamp(),
       text: text.trim(),
     });

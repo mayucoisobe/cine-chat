@@ -17,7 +17,6 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { SmallAddIcon } from '@chakra-ui/icons';
-import { GrAdd } from 'react-icons/gr';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { StarRating } from './StarRating';
 import { sendList } from './sendGetList';
@@ -66,8 +65,9 @@ export const InputModal = ({ poster, movie, type, title }: Props): JSX.Element =
       {(user === null || user === undefined) && <PopoverCo />}
       {user && (
         <>
-          <Button onClick={onOpen} width={5} colorScheme="gray">
-            <SmallAddIcon />
+          <Button onClick={onOpen} width={5} colorScheme="gray" p={0}>
+            {/* <SmallAddIcon /> */}
+            <Image width={45} height={45} alt="cinemaadd" src="/film-add.svg"></Image>
           </Button>
           <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
@@ -79,7 +79,7 @@ export const InputModal = ({ poster, movie, type, title }: Props): JSX.Element =
                   <Image width="150" height="225" src={poster} alt="poster-image" />
                   <div>
                     <Heading size="md">{title}</Heading>
-                    <StarRating value={value} setValue={setValue} onChange={onChange} />
+                    <StarRating value={value} size={20} setValue={setValue} onChange={onChange} />
                   </div>
                 </Flex>
                 <FormControl mt={4}>
