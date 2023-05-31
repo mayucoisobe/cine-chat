@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import {
   Button,
+  Box,
   Card,
   CardBody,
   CardFooter,
@@ -35,7 +36,7 @@ export const SearchResult = ({ movie, type }: Props): JSX.Element => {
   console.log(title, date, movie, voteAverage);
 
   return (
-    <div>
+    <Box>
       <Card direction={{ base: 'column', sm: 'row' }} overflow="hidden" variant="outline">
         <a href={`https://www.themoviedb.org/${type}/${movie.id}`} target="_blank" rel="noopener noreferrer">
           <Image width="150" height="225" alt={`${movie.title}`} src={poster} />
@@ -57,6 +58,6 @@ export const SearchResult = ({ movie, type }: Props): JSX.Element => {
           </CardFooter>
         </Stack>
       </Card>
-    </div>
+    </Box>
   );
 };

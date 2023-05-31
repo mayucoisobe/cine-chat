@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Container } from '@chakra-ui/react';
 import axios from 'axios';
 import { SearchBar } from './SearchBar';
 import { SearchResult } from './SearchResult';
@@ -53,22 +54,18 @@ export const CinemaSearch = (): JSX.Element => {
 
   return (
     <>
-      <SearchBar search={search} />
-      <div>
-        {errorMessage ? (
-          <div>{errorMessage}</div>
-        ) : !loading && movies.length === 0 ? (
-          <span>該当するデータがありませんでした</span>
-        ) : (
-          movies.map((movie, index) => (
-            <SearchResult
-              key={`${index}-${movie.id}`}
-              movie={movie}
-              type={type}
-            />
-          ))
-        )}
-      </div>
+      <Container>
+        <SearchBar search={search} />
+        <div>
+          {errorMessage ? (
+            <div>{errorMessage}</div>
+          ) : !loading && movies.length === 0 ? (
+            <span>該当するデータがありませんでした</span>
+          ) : (
+            movies.map((movie, index) => <SearchResult key={`${index}-${movie.id}`} movie={movie} type={type} />)
+          )}
+        </div>
+      </Container>
     </>
   );
 };

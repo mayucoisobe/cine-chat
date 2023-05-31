@@ -1,0 +1,74 @@
+.frameGradient {
+  position: relative;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.frameGradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 2rem;
+  border: 3px solid transparent;
+  transition: transform 0.3s linear, border-width 0.3s linear, border-radius 0.3s linear, filter 0.6s linear;
+  background-image: linear-gradient(
+    135deg,
+    rgb(74, 234, 220) 0%,
+    rgb(151, 120, 209) 35%,
+    rgb(207, 42, 186) 50%,
+    rgb(238, 44, 130) 65%,
+    rgb(251, 105, 98) 80%,
+    rgb(254, 248, 76) 100%
+  );
+  background-origin: border-box; /* 背景の基準位置はボーダーも含める */
+  background-clip: border-box; /* 背景の適用範囲はボーダーも含める */
+  background-size: 200% 200%;
+  animation: animatedgradient 5s ease alternate infinite;
+
+  -webkit-mask-image: linear-gradient(#fff 0 0), linear-gradient(#fff 0 0);
+  -webkit-mask-clip: padding-box, border-box;
+  -webkit-mask-composite: destination-out;
+  mask-image: linear-gradient(#fff 0 0), linear-gradient(#fff 0 0);
+  mask-clip: padding-box, border-box;
+  mask-composite: exclude;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.input {
+  border: none !important;
+  min-height: 50px;
+}
+.input:focus-visible {
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* .frameGradient02 {
+  --x: 50%;
+  --y: 50%;
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 2rem !important;
+  border: 5px solid transparent !important;
+  background: linear-gradient(#1d1f20, #1d1f20) padding-box,
+    radial-gradient(farthest-corner at var(--x) var(--y), #ad05bc, rgb(5, 245, 217)) border-box !important;
+} */

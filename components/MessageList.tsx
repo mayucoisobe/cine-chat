@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
-import { Avatar, Box, Heading, Text, WrapItem } from '@chakra-ui/react';
+import { Avatar, Box, Flex, Heading, Text, WrapItem } from '@chakra-ui/react';
+import styles from '../styles/messageListInput.module.css';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { useMessages } from '../hooks/useMessages';
 import { formatDistance } from 'date-fns';
@@ -10,8 +11,8 @@ export const MessageList = ({ roomId }): JSX.Element => {
   const { user } = useAuthContext();
   const messages = useMessages(roomId);
 
-  console.log(roomId);
-  console.log(messages);
+  // console.log(roomId);
+  // console.log(messages);
 
   useLayoutEffect(() => {
     if (containerRef.current) {
@@ -20,12 +21,10 @@ export const MessageList = ({ roomId }): JSX.Element => {
   });
 
   return (
-    <Box ref={containerRef}>
-      <Box>
-        {messages.map((x) => (
-          <Message key={x.id} message={x} isOwnMessage={x.uid === user.uid} />
-        ))}
-      </Box>
+    <Box ref={containerRef} className={styles.frameGradient} p={{ base: 5, sm: 7 }} my={5}>
+      {messages.map((x) => (
+        <Message key={x.id} message={x} isOwnMessage={x.uid === user.uid} />
+      ))}
     </Box>
   );
 };
@@ -53,19 +52,37 @@ function Message({ message, isOwnMessage }) {
   const { displayName, photoURL, text, timestamp } = message;
   return (
     <Box className={['message', isOwnMessage && 'own-message'].join(' ')}>
-      {/* <p>
-        <Image width={40} height={40} src={photoURL} alt="avatar" borderRadius="full" />
-      </p> */}
       <WrapItem>
-        <Avatar size="md" name={displayName} src={photoURL} />
+        <Avatar size={{ base: 'sm', sm: 'md' }} name={displayName} src={photoURL} />
       </WrapItem>
-      <Heading as="h4" size="sm" className="sender">
-        {isOwnMessage ? 'You' : `${displayName}`}
-      </Heading>
-      <Text as="span" fontSize="10px">
-        {time(timestamp)}
-      </Text>
+      <Flex>
+        <Heading as="h4" fontSize={{ base: '10px', sm: 'xs' }} className="sender">
+          {isOwnMessage ? 'You' : `${displayName}`}
+        </Heading>
+        <Text as="span" fontSize="10px">
+          {time(timestamp)}
+        </Text>
+      </Flex>
+
       <Text>{text}</Text>
     </Box>
   );
 }
+
+// // border枠のグラデーションを変化させる
+// const [x, setX] = useState(0);
+// const [y, setY] = useState(100);
+
+// useEffect(() => {
+//   const interval = setInterval(() => {
+//     setX((prevX) => (prevX + 1) % 101);
+//     setY((prevY) => (prevY - 2 < 0 ? 100 : prevY - 1));
+//   }, 500);
+
+//   return () => clearInterval(interval);
+// }, []);
+
+// const boxStyle = {
+//   '--x': `${x}%`,
+//   '--y': `${y}%`,
+// };

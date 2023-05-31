@@ -29,22 +29,34 @@ export const CinemaList = (): JSX.Element => {
 
   return (
     <Container maxW="md">
+      {/* <Container> */}
       <>
         <Box
           borderColor="brand.100"
           borderTopWidth="16px"
           borderBottomWidth="16px"
+          bgSize={{ base: '12vw', sm: '3.9rem' }}
+          px={{ base: '12vw', sm: '3.9rem' }}
           className={`${styles.cinelist} myroom`}
         >
-          <Card bg="brand.200" borderRadius="xl" color="brand.100" maxW="md" p={2}>
-            <Center pos="relative" w="100%">
+          <Card
+            bg="brand.200"
+            borderRadius="xl"
+            color="brand.100"
+            maxW="md"
+            p={{ base: '.5rem', sm: '.5rem' }}
+            pos="relative"
+            overflow="hidden"
+          >
+            <Center w="100%">
+              <Box className={styles.noisebg}></Box>
               <Box className={styles.cross}></Box>
               <Box
                 border="4px"
                 borderColor="brand.100"
                 borderRadius="full"
-                pt="70%"
-                w="70%"
+                pt={{ base: '70%', sm: '75%' }}
+                w={{ base: '70%', sm: '75%' }}
                 className={styles.round}
               ></Box>
             </Center>
@@ -70,6 +82,8 @@ export const CinemaList = (): JSX.Element => {
                 borderColor="brand.100"
                 borderTopWidth="16px"
                 borderBottomWidth="16px"
+                bgSize={{ base: '12vw', sm: '3.9rem' }}
+                px={{ base: '12vw', sm: '3.9rem' }}
                 className={`${styles.cinelist} myroom`}
               >
                 <Card

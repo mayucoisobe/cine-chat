@@ -29,18 +29,25 @@ const ChatRoomPage: NextPage<StatusPageProps> = (props) => {
         <title>{title}</title>
         <meta property="og:title" content={title} key="ogtitle" />
       </Head>
-      <Container>
-        <Heading align="center">{props.id}の部屋</Heading>
-        <Box>
-          <Text>
-            <Link href="/">← Back to home</Link>
-          </Text>
-        </Box>
-        <Box>
-          <MessageList roomId={props.id} />
-          <MessageInput roomId={props.id} />
-        </Box>
-      </Container>
+      <Box bg="brand.100" color="white">
+        <Container>
+          <Heading fontSize="2xl" align="center" py={8}>
+            {props.id}
+            {/* <Text as="span" fontSize="sm">
+            ルーム
+          </Text> */}
+          </Heading>
+          <Box>
+            <Text>
+              <Link href="/">← Back to home</Link>
+            </Text>
+          </Box>
+          <Box>
+            <MessageList roomId={props.id} />
+            <MessageInput roomId={props.id} />
+          </Box>
+        </Container>
+      </Box>
     </>
   );
 };
