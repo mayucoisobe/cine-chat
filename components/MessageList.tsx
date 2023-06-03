@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from 'react';
-import { Avatar, Box, Flex, Heading, Text, WrapItem } from '@chakra-ui/react';
+import { Avatar, Box, Flex, Heading, List, ListItem, Text, VStack } from '@chakra-ui/react';
 import styles from '../styles/messageListInput.module.css';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { useMessages } from '../hooks/useMessages';
@@ -21,11 +21,11 @@ export const MessageList = ({ roomId }): JSX.Element => {
   });
 
   return (
-    <Box ref={containerRef} className={styles.frameGradient} p={{ base: 5, sm: 7 }} my={5}>
+    <List ref={containerRef} className={styles.frameGradient} p={{ base: 5, sm: 7 }} my={5}>
       {messages.map((x) => (
         <Message key={x.id} message={x} isOwnMessage={x.uid === user.uid} />
       ))}
-    </Box>
+    </List>
   );
 };
 
@@ -51,21 +51,26 @@ const time = (date: Timestamp | null) => {
 function Message({ message, isOwnMessage }) {
   const { displayName, photoURL, text, timestamp } = message;
   return (
-    <Box className={['message', isOwnMessage && 'own-message'].join(' ')}>
-      <WrapItem>
-        <Avatar size={{ base: 'sm', sm: 'md' }} name={displayName} src={photoURL} />
-      </WrapItem>
-      <Flex>
-        <Heading as="h4" fontSize={{ base: '10px', sm: 'xs' }} className="sender">
-          {isOwnMessage ? 'You' : `${displayName}`}
-        </Heading>
-        <Text as="span" fontSize="10px">
-          {time(timestamp)}
-        </Text>
+    <ListItem className={['message', isOwnMessage && 'own-message'].join(' ')} py={4}>
+      <Flex flexDirection={isOwnMessage ? 'row-reverse' : 'row'} gap={2}>
+        <Box>
+          <Avatar size={{ base: 'sm', sm: 'md' }} name={displayName} src={photoURL} />
+        </Box>
+        <Box>
+          <Flex justifyContent={isOwnMessage ? 'flex-end' : 'flex-start'}>
+            <Heading as="h4" fontSize={{ base: '10px', sm: 'xs' }} className="sender">
+              {isOwnMessage ? 'You' : `${displayName}`}
+            </Heading>
+            <Text as="span" fontSize="10px" px={2}>
+              {time(timestamp)}
+            </Text>
+          </Flex>
+          <Text fontSize={{ base: 'sm', sm: 'md' }} align="left">
+            {text}
+          </Text>
+        </Box>
       </Flex>
-
-      <Text>{text}</Text>
-    </Box>
+    </ListItem>
   );
 }
 

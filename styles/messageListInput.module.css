@@ -59,6 +59,32 @@
   border-color: transparent !important;
   box-shadow: none !important;
 }
+.input::-webkit-scrollbar {
+  width: 16px;
+}
+.input::-webkit-scrollbar-track {
+  background-image: linear-gradient(
+    135deg,
+    rgb(74, 234, 220) 0%,
+    rgb(151, 120, 209) 35%,
+    rgb(207, 42, 186) 50%,
+    rgb(238, 44, 130) 65%,
+    rgb(251, 105, 98) 80%,
+    rgb(254, 248, 76) 100%
+  );
+  border-radius: 2rem;
+}
+.input::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 0.5rem;
+  border-right: 4px solid transparent; /* 透明なボーダーをつける */
+  border-left: 4px solid transparent; /* 透明なボーダーをつける */
+  background-clip: padding-box;
+}
+.input::-webkit-scrollbar-track {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
 
 /* .frameGradient02 {
   --x: 50%;

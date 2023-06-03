@@ -2,6 +2,7 @@ import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Box, Container, Heading, Text } from '@chakra-ui/react';
+import { AuthGuard } from '@/feature/auth/AuthGuard';
 import { MessageInput } from '../../components/MessageInput';
 import { MessageList } from '../../components/MessageList';
 // import { useRouter } from 'next/router';
@@ -29,25 +30,30 @@ const ChatRoomPage: NextPage<StatusPageProps> = (props) => {
         <title>{title}</title>
         <meta property="og:title" content={title} key="ogtitle" />
       </Head>
-      <Box bg="brand.100" color="white">
-        <Container>
-          <Heading fontSize="2xl" align="center" py={8}>
-            {props.id}
-            {/* <Text as="span" fontSize="sm">
-            ルーム
-          </Text> */}
-          </Heading>
-          <Box>
-            <Text>
-              <Link href="/">← Back to home</Link>
-            </Text>
-          </Box>
-          <Box>
-            <MessageList roomId={props.id} />
-            <MessageInput roomId={props.id} />
-          </Box>
-        </Container>
-      </Box>
+      <AuthGuard>
+        <Box bg="brand.100" color="white">
+          <Container minHeight="calc(100vh - 80px)">
+            <Heading
+              fontSize={{ base: '5xl', sm: '6xl', md: '7xl' }}
+              align="center"
+              py={8}
+              color="transparent"
+              style={{ WebkitTextStroke: '1.5px white' }}
+            >
+              {props.id}
+            </Heading>
+            <Box>
+              <Text>
+                <Link href="/">← Back to home</Link>
+              </Text>
+            </Box>
+            <Box>
+              <MessageList roomId={props.id} />
+              <MessageInput roomId={props.id} />
+            </Box>
+          </Container>
+        </Box>
+      </AuthGuard>
     </>
   );
 };

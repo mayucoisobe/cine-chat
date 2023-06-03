@@ -22,6 +22,7 @@
     "eslint-config-next": "13.4.2",
     "firebase": "^9.21.0",
     "framer-motion": "^10.12.10",
+    "gsap": "^3.11.5",
     "next": "13.4.2",
     "react": "18.2.0",
     "react-awesome-stars-rating": "^0.13.6",

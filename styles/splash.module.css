@@ -1,0 +1,50 @@
+.splash {
+  background-color: #1a1a1a;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+.splashTitle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 中央に配置 */
+  color: 1a1a1a;
+  font-family: 'Darumadrop One';
+  font-size: 2.5rem;
+  padding: 1em;
+  border-radius: 1rem;
+  text-align: center;
+  background: white;
+  filter: drop-shadow(0 0 10px white) drop-shadow(0 0 20px white) drop-shadow(0 0 40px white);
+}
+.splashTitleSm {
+  font-size: 2rem;
+}
+
+.curtainWraper {
+  display: flex;
+  width: 100vw;
+  height: 80vh;
+}
+
+.curtainElement:nth-child(odd) {
+  background-color: #950808;
+}
+
+.curtainElement:nth-child(even) {
+  background-color: #bf0b0b;
+}
+
+.curtainLeft,
+.curtainRight {
+  width: 50%;
+  display: flex;
+}
+
+.curtainElement {
+  width: calc(100% / 6);
+  height: 100%;
+  border-bottom-right-radius: 4rem;
+  border-bottom-left-radius: 4rem;
+}

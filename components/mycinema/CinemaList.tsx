@@ -29,7 +29,6 @@ export const CinemaList = (): JSX.Element => {
 
   return (
     <Container maxW="md">
-      {/* <Container> */}
       <>
         <Box
           borderColor="brand.100"
@@ -97,7 +96,14 @@ export const CinemaList = (): JSX.Element => {
                   px={2}
                   py={4}
                 >
-                  <Box pos="relative" w="50%">
+                  <Box
+                    pos="relative"
+                    w="50%"
+                    as="a"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href={`https://www.themoviedb.org/${list.type}/${list.id}`}
+                  >
                     <Image
                       alt={list.title}
                       src={list.src}
@@ -115,17 +121,16 @@ export const CinemaList = (): JSX.Element => {
                       // }}
                     ></Image>
                     <Button
-                      as="a"
-                      // colorScheme="green"
+                      // as="a"
                       bottom={0}
                       left={0}
                       variant="solid"
                       opacity="0.8"
                       p={0}
                       pos="absolute"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      href={`https://www.themoviedb.org/${list.type}/${list.id}`}
+                      // rel="noopener noreferrer"
+                      // target="_blank"
+                      // href={`https://www.themoviedb.org/${list.type}/${list.id}`}
                     >
                       <Icon as={RiMovie2Line} w={5} h={5} />
                     </Button>
