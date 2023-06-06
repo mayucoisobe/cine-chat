@@ -38,6 +38,7 @@ const ChatRoomPage: NextPage<StatusPageProps> = (props) => {
               align="center"
               py={8}
               color="transparent"
+              letterSpacing="wider"
               style={{ WebkitTextStroke: '1.5px white' }}
             >
               {props.id}

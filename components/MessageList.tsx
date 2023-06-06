@@ -51,7 +51,7 @@ const time = (date: Timestamp | null) => {
 function Message({ message, isOwnMessage }) {
   const { displayName, photoURL, text, timestamp } = message;
   return (
-    <ListItem className={['message', isOwnMessage && 'own-message'].join(' ')} py={4}>
+    <ListItem className={['message', isOwnMessage && 'own-message'].join(' ')} py={5}>
       <Flex flexDirection={isOwnMessage ? 'row-reverse' : 'row'} gap={2}>
         <Box>
           <Avatar size={{ base: 'sm', sm: 'md' }} name={displayName} src={photoURL} />

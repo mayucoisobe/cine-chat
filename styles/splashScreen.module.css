@@ -16,7 +16,8 @@
   border-radius: 1rem;
   text-align: center;
   background: white;
-  filter: drop-shadow(0 0 10px white) drop-shadow(0 0 20px white) drop-shadow(0 0 40px white);
+  filter: drop-shadow(0 0 10px white) drop-shadow(0 0 15px white) drop-shadow(0 0 30px white);
+  z-index: 100;
 }
 .splashTitleSm {
   font-size: 2rem;
@@ -40,6 +41,8 @@
 .curtainRight {
   width: 50%;
   display: flex;
+  position: relative;
+  z-index: 200;
 }
 
 .curtainElement {
