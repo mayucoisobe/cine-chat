@@ -47,7 +47,7 @@ const Page: NextPage = () => {
       <Head></Head>
       <AuthGuard>
         <Box bg="brand.100">
-          <Container>
+          <Container px={{ base: '4', sm: '6' }}>
             {user ? <Text>{user.displayName}さん、ようこそ！</Text> : <Text>ログアウト状態です</Text>}
             <Box>
               <Heading> ALL ROOMS </Heading>

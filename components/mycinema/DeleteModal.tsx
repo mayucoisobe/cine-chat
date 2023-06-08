@@ -48,7 +48,7 @@ export const DeleteModal = ({ user, list }: JSX.Element) => {
             <Text color="white" pb={4}>
               マイシネマから削除しますか？
             </Text>
-            <Flex justifyContent="flex-start" gap={{ base: '3', sm: '6' }}>
+            <Flex justifyContent="space-between" gap={{ base: '3', sm: '6' }}>
               <Box w="40%">
                 <Image
                   width="150"
@@ -60,9 +60,11 @@ export const DeleteModal = ({ user, list }: JSX.Element) => {
                   }}
                 />
               </Box>
-              <Text color="white" fontWeight="600" fontSize={{ base: 'md', sm: 'xl' }}>
-                {list.title}
-              </Text>
+              <Box w="55%">
+                <Text color="white" fontWeight="600" fontSize={{ base: 'md', sm: 'xl' }}>
+                  {list.title}
+                </Text>
+              </Box>
             </Flex>
           </ModalBody>
           <ModalFooter>

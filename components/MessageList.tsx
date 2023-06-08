@@ -18,6 +18,7 @@ export const MessageList = ({ roomId }): JSX.Element => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
+    console.log(containerRef.current.scrollTop);
   });
 
   return (

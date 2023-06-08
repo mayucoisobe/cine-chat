@@ -57,16 +57,24 @@ export const UpdateModal = ({ user, list }: JSX.Element) => {
         <ModalOverlay />
         <ModalContent bg="brand.100" mx={{ base: '2' }}>
           <ModalHeader color="white">編集画面</ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton color="white" />
           <ModalBody>
             <Text color="white" pb={4}>
               変更内容を保存しますか？
             </Text>
-            <Flex justifyContent="flex-start" gap={{ base: '3', sm: '6' }}>
+            <Flex justifyContent="space-between" gap={{ base: '3', sm: '6' }}>
               <Box w="40%">
-                <Image width="150" height="225" alt={list.title} src={list.src} />
+                <Image
+                  width="150"
+                  height="225"
+                  alt={list.title}
+                  src={list.src}
+                  style={{
+                    borderRadius: '.5rem',
+                  }}
+                />
               </Box>
-              <Box>
+              <Box w="55%">
                 <Text color="white" fontWeight="600" fontSize={{ base: 'md', sm: 'xl' }} pb={4}>
                   {list.title}
                 </Text>

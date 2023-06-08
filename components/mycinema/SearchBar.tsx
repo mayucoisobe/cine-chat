@@ -32,7 +32,7 @@ export const SearchBar = ({ search }): JSX.Element => {
         <option value="option2">TV shows</option>
       </Select>
       <form>
-        <Flex>
+        <Flex gap={4}>
           <Input
             value={searchValue}
             onChange={handleInputChange}

@@ -53,7 +53,7 @@ export const CinemaSearch = (): JSX.Element => {
   return (
     <>
       <Box bg="brand.100" color="white">
-        <Container minHeight="calc(100vh - 80px)">
+        <Container minHeight="calc(100vh - 80px)" px={{ base: '4', sm: '6' }}>
           <SearchBar search={search} />
           <div>
             {errorMessage ? (

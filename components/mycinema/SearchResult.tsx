@@ -53,7 +53,15 @@ export const SearchResult = ({ movie, type }: Props): JSX.Element => {
       >
         <Box p={5} minW="180px">
           <a href={`https://www.themoviedb.org/${type}/${movie.id}`} target="_blank" rel="noopener noreferrer">
-            <Image width="150" height="225" alt={`${movie.title}`} src={poster} />
+            <Image
+              width="150"
+              height="225"
+              alt={`${movie.title}`}
+              src={poster}
+              style={{
+                borderRadius: '.5rem',
+              }}
+            />
           </a>
         </Box>
         <Stack>

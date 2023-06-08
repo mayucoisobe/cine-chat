@@ -39,7 +39,16 @@ chakra uiと併用のcss
 /* Headingタグを使うと、_appで設定のZenMaruになるため、他のタグを付与すること */
 .font-ttl {
   font-family: 'Darumadrop One';
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+@media (min-width: 576px) {
+  .font-ttl {
+    font-size: 2rem;
+  }
+}
+.font-ttl-sm {
+  font-family: 'Darumadrop One';
+  font-size: 1.5rem;
 }
 .message.own-message {
   text-align: right;

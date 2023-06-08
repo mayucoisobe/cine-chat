@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { Button, Box, Container, Image, Heading, AbsoluteCenter, Center } from '@chakra-ui/react';
+import { AbsoluteCenter, Button, Box, Center, Container, Heading, Image, Text } from '@chakra-ui/react';
 import { GoogleAuthProvider, signInWithPopup, UserCredential } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 import { auth } from '../firebase';
@@ -43,10 +43,11 @@ export default function Login(): JSX.Element {
                 onClick={loginWithGoogle}
                 variant="outline"
                 py={6}
+                fontSize={{ base: 'sm', sm: 'md', md: 'lg' }}
                 _hover={{ color: 'brand.100', backgroundColor: 'white' }}
               >
-                <Image boxSize="20px" objectFit="cover" alt="google" src="/google-icon.svg" mr={2}></Image>
-                Googleアカウントでログインする
+                <Image boxSize="20px" objectFit="cover" alt="google" mx={3} src="/google-icon.svg"></Image>
+                <Text mr={3}>Googleアカウントでログインする</Text>
               </Button>
             </AbsoluteCenter>
           </Box>

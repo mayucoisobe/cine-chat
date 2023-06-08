@@ -32,7 +32,7 @@ const ChatRoomPage: NextPage<StatusPageProps> = (props) => {
       </Head>
       <AuthGuard>
         <Box bg="brand.100" color="white">
-          <Container minHeight="calc(100vh - 80px)">
+          <Container minHeight="calc(100vh - 80px)" px={{ base: '4', sm: '6' }}>
             <Heading
               fontSize={{ base: '5xl', sm: '6xl', md: '7xl' }}
               align="center"

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 import {
+  Box,
   Button,
   FormControl,
   Flex,
@@ -72,19 +73,31 @@ export const InputModal = ({ poster, posterbg, movie, type, title }: Props): JSX
           </Button>
           <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-            <ModalContent>
-              <ModalHeader>マイルームに追加</ModalHeader>
-              <ModalCloseButton />
+            <ModalContent bg="brand.100" mx={{ base: '2' }}>
+              <ModalHeader color="white">マイルームに追加</ModalHeader>
+              <ModalCloseButton color="white" />
               <ModalBody pb={6}>
-                <Flex>
-                  <Image width="150" height="225" src={poster} alt="poster-image" />
-                  <div>
-                    <Heading size="md">{title}</Heading>
+                <Flex justifyContent="space-between" gap={{ base: '3', sm: '6' }}>
+                  <Box w="40%">
+                    <Image
+                      width="150"
+                      height="225"
+                      src={poster}
+                      alt="poster-image"
+                      style={{
+                        borderRadius: '.5rem',
+                      }}
+                    />
+                  </Box>
+                  <Box w="55%">
+                    <Heading color="white" fontWeight="600" fontSize={{ base: 'md', sm: 'xl' }} pb={4}>
+                      {title}
+                    </Heading>
                     <StarRating value={value} size={20} setValue={setValue} onChange={onChange} />
-                  </div>
+                  </Box>
                 </Flex>
                 <FormControl mt={4}>
-                  <Textarea onChange={handleChange} type="text" value={text} placeholder="memo" />
+                  <Textarea onChange={handleChange} type="text" value={text} placeholder="memo" color="white" />
                 </FormControl>
               </ModalBody>
               <ModalFooter>

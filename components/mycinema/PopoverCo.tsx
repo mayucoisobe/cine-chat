@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import {
   Popover,
   PopoverTrigger,
@@ -15,16 +16,17 @@ export const PopoverCo = ({ props }: JSX.Element) => {
     <>
       <Popover>
         <PopoverTrigger>
-          <Button>
-            <AddIcon />
+          <Button width="55px" height="55px" p="8px" colorScheme="gray">
+            {/* <AddIcon /> */}
+            <Image width={45} height={45} alt="cinemaadd" src="/film-add.svg"></Image>
           </Button>
         </PopoverTrigger>
-        <PopoverContent>
+        <PopoverContent w="270px" ml={2}>
           <PopoverArrow />
           <PopoverCloseButton />
-          <PopoverHeader>Please Note!</PopoverHeader>
-          <PopoverBody>
-            <span>マイルームに追加するにはログインが必要です！</span>
+          <PopoverHeader color="brand.100">未ログインの方はここまで！</PopoverHeader>
+          <PopoverBody color="brand.100">
+            <span>マイルームに追加するにはログインしてください!</span>
           </PopoverBody>
         </PopoverContent>
       </Popover>

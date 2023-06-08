@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import {
@@ -14,9 +15,8 @@ import {
   useDisclosure,
   useToast,
 } from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import styles from '../styles/header.module.css';
-
 import { BiCameraMovie } from 'react-icons/bi';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { auth } from '../firebase';
@@ -61,51 +61,96 @@ export const Header = (): JSX.Element => {
           w="full"
           top="0"
           left="0"
-          zIndex="200"
+          zIndex="300"
           bg="rgba(29, 31, 32, .8)"
           color="white"
-          px={4}
+          px={{ base: '4', sm: '6' }}
           className={styles.headerWrap}
           // className="container"
         >
           <Flex alignItems="center" gap="2">
-            <Icon as={BiCameraMovie} w={8} h={8} />
+            {/* <Icon as={BiCameraMovie} w={8} h={8} /> */}
             <Box className="font-ttl">
               <Link href="/">CINEMY==ROOM</Link>
             </Box>
           </Flex>
           <nav>
-            <Flex as="ul" gap={3} display={{ base: 'none', md: 'flex' }}>
-              <li>
-                <Link href="/">ChatRoom</Link>
+            <Flex as="ul" gap={7} display={{ base: 'none', md: 'flex' }}>
+              <li className="font-ttl-sm">
+                <Link href="/">Chat</Link>
               </li>
-              <li>
+              <li className="font-ttl-sm">
                 <Link href="/myroom">MyRoom</Link>
               </li>
-              <li>
+              <li className="font-ttl-sm">
                 <Link href="/myroom/search">Search</Link>
               </li>
-              <li>{user ? <p onClick={logOut}>Logout</p> : <Link href="/login">Login</Link>}</li>
+              <li className="font-ttl-sm">
+                {user ? <p onClick={logOut}>Logout</p> : <Link href="/login">Login</Link>}
+              </li>
             </Flex>
           </nav>
-          <IconButton icon={<HamburgerIcon />} display={{ base: 'block', md: 'none' }} onClick={onOpen} />
+          <IconButton
+            aria-label="Open menu"
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            display={{ base: 'block', md: 'none' }}
+            onClick={onOpen}
+            background="transparent !important"
+          />
         </Flex>
         <Drawer placement="left" size="xs" onClose={onClose} isOpen={isOpen}>
-          <DrawerOverlay>
-            <DrawerContent>
+          <DrawerOverlay mt="80px">
+            <DrawerContent mt="80px" bg="brand.100">
               <DrawerBody p={0}>
-                <Button w="100%" justifyContent="flex-start" onClick={onClose}>
-                  <Link href="/">ChatRoom</Link>
-                </Button>
-                <Button w="100%" justifyContent="flex-start" onClick={onClose}>
-                  <Link href="/myroom">MyRoom</Link>
-                </Button>
-                <Button w="100%" justifyContent="flex-start" onClick={onClose}>
-                  <Link href="/myroom/search">Search</Link>
-                </Button>
-                <Button w="100%" justifyContent="flex-start" onClick={onClose}>
-                  {user ? <p onClick={logOut}>Logout</p> : <Link href="/login">Login</Link>}
-                </Button>
+                <Link href="/" style={{ padding: '1rem 0' }}>
+                  <Button onClick={onClose} w="100%" justifyContent="flex-start" bg="brand.100" color="white">
+                    ChatRoom
+                  </Button>
+                </Link>
+                <Link href="/myroom" style={{ padding: '1rem 0' }}>
+                  <Button onClick={onClose} w="100%" justifyContent="flex-start" bg="brand.100" color="white">
+                    MyRoom
+                  </Button>
+                </Link>
+                <Link href="/myroom/search" style={{ padding: '1rem 0' }}>
+                  <Button onClick={onClose} w="100%" justifyContent="flex-start" bg="brand.100" color="white">
+                    Search
+                  </Button>
+                </Link>
+
+                {user ? (
+                  <Button
+                    onClick={() => {
+                      logOut();
+                      onClose();
+                    }}
+                    w="100%"
+                    justifyContent="flex-start"
+                    bg="brand.100"
+                    color="white"
+                    h="72px"
+                  >
+                    Logout
+                  </Button>
+                ) : (
+                  <Link href="/login" style={{ padding: '1rem 0' }}>
+                    <Button
+                      onClick={() => {
+                        onClose();
+                      }}
+                      w="100%"
+                      justifyContent="flex-start"
+                      bg="brand.100"
+                      color="white"
+                    >
+                      Login
+                    </Button>
+                  </Link>
+                )}
+
+                {/* <Button onClick={onClose} w="100%" justifyContent="flex-start" bg="brand.100" color="white">
+                  {user ? <Text onClick={logOut}>Logout</Text> : <Link href="/login">Login</Link>}
+                </Button> */}
               </DrawerBody>
             </DrawerContent>
           </DrawerOverlay>

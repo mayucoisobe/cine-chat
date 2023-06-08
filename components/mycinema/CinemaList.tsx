@@ -37,7 +37,10 @@ export const CinemaList = (): JSX.Element => {
         {myLists.length !== 0 &&
           myLists.map((list, index) => {
             return (
-              <Box key={index} width="calc(100% / 7)">
+              <Box
+                key={index}
+                width={{ base: 'calc(100% / 3)', md: 'calc(100% / 4)', lg: 'calc(100% / 5)', xl: 'calc(100% / 7)' }}
+              >
                 <Image
                   alt={list.title}
                   src={list.src}
@@ -47,15 +50,16 @@ export const CinemaList = (): JSX.Element => {
                   style={{
                     width: '100%',
                     height: 'auto',
-                    opacity: '.6',
+                    opacity: '.3',
                   }}
                 ></Image>
-                <Box pos="absolute" top="0" left="0" h="100%" w="full" bg="#424a31" mixBlendMode="saturation"></Box>
+                {/* <Box pos="absolute" top="0" left="0" h="100%" w="full" bg="#424a31" mixBlendMode="saturation"></Box> */}
+                <Box pos="absolute" top="0" left="0" h="100%" w="full" bg="#161515" mixBlendMode="hue"></Box>
               </Box>
             );
           })}
       </Flex>
-      <Container maxW="xl" pos="relative" zIndex="100" pt="5vh" right={{ md: '12%', lg: '20%' }}>
+      <Container maxW="xl" pos="relative" zIndex="200" pt="5vh" right={{ md: '12%', lg: '20%' }}>
         <>
           <Box
             borderColor="brand.100"
@@ -192,6 +196,29 @@ export const CinemaList = (): JSX.Element => {
               );
             })}
         </>
+      </Container>
+      <Container pos="fixed" top="30vh" left="30vw" zIndex="100">
+        <Box pos="relative">
+          {myLists.length !== 0 &&
+            myLists.map((list, index) => {
+              return (
+                <Box key={index} pos="absolute" top="0" left="0" zIndex={`-${index}`} w="1000px">
+                  <Image
+                    alt={list.title}
+                    src={list.srcbg}
+                    width={1920}
+                    height={800}
+                    sizes="100vw"
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      // opacity: '.3',
+                    }}
+                  ></Image>
+                </Box>
+              );
+            })}
+        </Box>
       </Container>
     </Box>
   );
