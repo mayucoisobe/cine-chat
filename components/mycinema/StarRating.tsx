@@ -8,14 +8,7 @@ type Props = {
 export const StarRating = ({ value, size, onChange }: Props): JSX.Element => {
   return (
     <>
-      <ReactStarsRating
-        onChange={onChange}
-        value={value}
-        size={size}
-        starGap={2}
-        // primaryColor={'black'}
-        className="stars"
-      />
+      <ReactStarsRating onChange={onChange} value={value} size={size} starGap={2} className="stars" />
     </>
   );
 };

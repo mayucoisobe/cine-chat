@@ -7,6 +7,7 @@ import { GlobalAuthState } from '@/providers/AuthProvider';
 async function sendList(
   user: GlobalAuthState,
   poster: string,
+  posterbg: string,
   movie,
   title: string,
   type: string,
@@ -18,6 +19,7 @@ async function sendList(
       await addDoc(collection(db, 'mycinema', user.uid, 'mylist'), {
         uid: user.uid,
         src: poster,
+        srcbg: posterbg,
         title: title,
         id: movie.id,
         type: type,
@@ -38,7 +40,7 @@ function getLists(user: GlobalAuthState) {
   useEffect(() => {
     if (user) {
       const unsubscribe = onSnapshot(
-        query(collection(db, 'mycinema', user.uid, 'mylist'), orderBy('timestamp', 'asc')),
+        query(collection(db, 'mycinema', user.uid, 'mylist'), orderBy('timestamp', 'desc')),
         (querySnapshot) => {
           const userLists = querySnapshot.docs.map((x) => ({
             docId: x.id,

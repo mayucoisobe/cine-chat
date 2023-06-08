@@ -26,8 +26,8 @@ export const SearchBar = ({ search }): JSX.Element => {
 
   return (
     <>
-      <Text>movies or tv shows?</Text>
-      <Select value={selectedOption} onChange={handleSelectChange}>
+      <Text pt={5}>choose Movies or Tv Shows</Text>
+      <Select value={selectedOption} onChange={handleSelectChange} py={5}>
         <option value="option1">Movies</option>
         <option value="option2">TV shows</option>
       </Select>
@@ -39,9 +39,15 @@ export const SearchBar = ({ search }): JSX.Element => {
             type="text"
             placeholder="タイトルを入力"
             variant="flushed"
-            focusBorderColor="pink.400"
+            focusBorderColor="yellow.400"
           />
-          <IconButton onClick={callSearchFunction} type="submit" icon={<SearchIcon />} aria-label="Search database" />
+          <IconButton
+            onClick={callSearchFunction}
+            type="submit"
+            icon={<SearchIcon />}
+            aria-label="Search database"
+            color="brand.500"
+          />
         </Flex>
       </form>
     </>

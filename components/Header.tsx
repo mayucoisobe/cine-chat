@@ -15,6 +15,8 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
+import styles from '../styles/header.module.css';
+
 import { BiCameraMovie } from 'react-icons/bi';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { auth } from '../firebase';
@@ -54,9 +56,17 @@ export const Header = (): JSX.Element => {
         <Flex
           justifyContent="space-between"
           alignItems="center"
-          // gap="60px"
           height="80px"
-          className="container"
+          pos="fixed"
+          w="full"
+          top="0"
+          left="0"
+          zIndex="200"
+          bg="rgba(29, 31, 32, .8)"
+          color="white"
+          px={4}
+          className={styles.headerWrap}
+          // className="container"
         >
           <Flex alignItems="center" gap="2">
             <Icon as={BiCameraMovie} w={8} h={8} />
@@ -68,9 +78,6 @@ export const Header = (): JSX.Element => {
             <Flex as="ul" gap={3} display={{ base: 'none', md: 'flex' }}>
               <li>
                 <Link href="/">ChatRoom</Link>
-              </li>
-              <li>
-                <Link href="/tweet">Tweet24</Link>
               </li>
               <li>
                 <Link href="/myroom">MyRoom</Link>
@@ -89,9 +96,6 @@ export const Header = (): JSX.Element => {
               <DrawerBody p={0}>
                 <Button w="100%" justifyContent="flex-start" onClick={onClose}>
                   <Link href="/">ChatRoom</Link>
-                </Button>
-                <Button w="100%" justifyContent="flex-start" onClick={onClose}>
-                  <Link href="/tweet">Tweet24</Link>
                 </Button>
                 <Button w="100%" justifyContent="flex-start" onClick={onClose}>
                   <Link href="/myroom">MyRoom</Link>

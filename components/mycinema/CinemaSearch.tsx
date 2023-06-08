@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container } from '@chakra-ui/react';
+import { Box, Container } from '@chakra-ui/react';
 import axios from 'axios';
 import { SearchBar } from './SearchBar';
 import { SearchResult } from './SearchResult';
@@ -36,8 +36,6 @@ export const CinemaSearch = (): JSX.Element => {
       setType('tv');
     }
 
-    console.log(apiUrl, type);
-
     const fetchData = async () => {
       try {
         const res = await axios.get(`${apiUrl}&query=${searchValue}`);
@@ -54,18 +52,20 @@ export const CinemaSearch = (): JSX.Element => {
 
   return (
     <>
-      <Container>
-        <SearchBar search={search} />
-        <div>
-          {errorMessage ? (
-            <div>{errorMessage}</div>
-          ) : !loading && movies.length === 0 ? (
-            <span>該当するデータがありませんでした</span>
-          ) : (
-            movies.map((movie, index) => <SearchResult key={`${index}-${movie.id}`} movie={movie} type={type} />)
-          )}
-        </div>
-      </Container>
+      <Box bg="brand.100" color="white">
+        <Container minHeight="calc(100vh - 80px)">
+          <SearchBar search={search} />
+          <div>
+            {errorMessage ? (
+              <div>{errorMessage}</div>
+            ) : !loading && movies.length === 0 ? (
+              <span>該当するデータがありませんでした</span>
+            ) : (
+              movies.map((movie, index) => <SearchResult key={`${index}-${movie.id}`} movie={movie} type={type} />)
+            )}
+          </div>
+        </Container>
+      </Box>
     </>
   );
 };
@@ -83,3 +83,7 @@ export const CinemaSearch = (): JSX.Element => {
 
 // 画像のない映画の検索
 // laland
+
+// カテゴリ（映画/tv）のリスト
+// https://api.themoviedb.org/3/genre/movie/list?api_key=a8063e5f47a60daac25dbb25e7c45a4b
+// https://api.themoviedb.org/3/genre/tv/list?api_key=a8063e5f47a60daac25dbb25e7c45a4b

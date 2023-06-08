@@ -30,21 +30,28 @@ export default function Login(): JSX.Element {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Container>
-        <Box position="relative" height={`calc(100vh - 80px)`}>
-          <AbsoluteCenter>
-            <Center>
-              <Heading as="h1" mb={5}>
-                ログイン
-              </Heading>
-            </Center>
-            <Button onClick={loginWithGoogle} variant="outline" py={6}>
-              <Image boxSize="20px" objectFit="cover" alt="google" src="/google-icon.svg" mr={2}></Image>
-              Googleアカウントでログインする
-            </Button>
-          </AbsoluteCenter>
-        </Box>
-      </Container>
+      <Box bg="brand.100" color="white">
+        <Container>
+          <Box position="relative" height={`calc(100vh - 80px)`}>
+            <AbsoluteCenter>
+              <Center>
+                <Heading as="h1" mb={5}>
+                  ログイン
+                </Heading>
+              </Center>
+              <Button
+                onClick={loginWithGoogle}
+                variant="outline"
+                py={6}
+                _hover={{ color: 'brand.100', backgroundColor: 'white' }}
+              >
+                <Image boxSize="20px" objectFit="cover" alt="google" src="/google-icon.svg" mr={2}></Image>
+                Googleアカウントでログインする
+              </Button>
+            </AbsoluteCenter>
+          </Box>
+        </Container>
+      </Box>
     </div>
   );
 }

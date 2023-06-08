@@ -16,7 +16,7 @@
   border-radius: 1rem;
   text-align: center;
   background: white;
-  filter: drop-shadow(0 0 10px white) drop-shadow(0 0 15px white) drop-shadow(0 0 30px white);
+  filter: drop-shadow(0 0 10px white) drop-shadow(0 0 30px white);
   z-index: 100;
 }
 .splashTitleSm {

@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import {
+  Box,
   Button,
   ButtonGroup,
+  Flex,
   Icon,
   Modal,
   ModalBody,
@@ -10,6 +12,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Text,
   useDisclosure,
   useToast,
 } from '@chakra-ui/react';
@@ -32,19 +35,35 @@ export const DeleteModal = ({ user, list }: JSX.Element) => {
 
   return (
     <>
-      <Button colorScheme="brand" onClick={onOpen} p={0}>
+      <Button colorScheme="brand" onClick={onOpen} p={0} w={{ base: '10', sm: '12' }} h={{ base: '10', sm: '12' }}>
         <Icon as={BsTrash3Fill} w={5} h={5} color="brand.200" />
         {/* 削除 */}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>削除画面</ModalHeader>
-          <ModalCloseButton />
+        <ModalContent bg="brand.100" mx={{ base: '2' }}>
+          <ModalHeader color="white">削除画面</ModalHeader>
+          <ModalCloseButton color="white" />
           <ModalBody>
-            マイシネマから削除しますか？
-            <p>{list.title}</p>
-            <Image width="150" height="225" alt={list.title} src={list.src} />
+            <Text color="white" pb={4}>
+              マイシネマから削除しますか？
+            </Text>
+            <Flex justifyContent="flex-start" gap={{ base: '3', sm: '6' }}>
+              <Box w="40%">
+                <Image
+                  width="150"
+                  height="225"
+                  alt={list.title}
+                  src={list.src}
+                  style={{
+                    borderRadius: '.5rem',
+                  }}
+                />
+              </Box>
+              <Text color="white" fontWeight="600" fontSize={{ base: 'md', sm: 'xl' }}>
+                {list.title}
+              </Text>
+            </Flex>
           </ModalBody>
           <ModalFooter>
             <ButtonGroup>

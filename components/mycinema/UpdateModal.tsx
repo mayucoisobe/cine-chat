@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import {
+  Box,
   Button,
   ButtonGroup,
   Flex,
@@ -13,6 +14,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Text,
   Textarea,
   useDisclosure,
   useToast,
@@ -47,27 +49,32 @@ export const UpdateModal = ({ user, list }: JSX.Element) => {
 
   return (
     <>
-      <Button colorScheme="brand" onClick={onOpen} p={0}>
+      <Button colorScheme="brand" onClick={onOpen} p={0} w={{ base: '10', sm: '12' }} h={{ base: '10', sm: '12' }}>
         <Icon as={RiEditLine} w={5} h={5} color="brand.200" />
         {/* 編集 */}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>編集画面</ModalHeader>
+        <ModalContent bg="brand.100" mx={{ base: '2' }}>
+          <ModalHeader color="white">編集画面</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            変更内容を保存しますか？
-            {/* {list.docId} */}
-            <Flex>
-              <Image width="150" height="225" alt={list.title} src={list.src} />
-              <div>
-                <h2>{list.title}</h2>
+            <Text color="white" pb={4}>
+              変更内容を保存しますか？
+            </Text>
+            <Flex justifyContent="flex-start" gap={{ base: '3', sm: '6' }}>
+              <Box w="40%">
+                <Image width="150" height="225" alt={list.title} src={list.src} />
+              </Box>
+              <Box>
+                <Text color="white" fontWeight="600" fontSize={{ base: 'md', sm: 'xl' }} pb={4}>
+                  {list.title}
+                </Text>
                 <StarRating value={value} size={20} setValue={setValue} onChange={onChange} />
-              </div>
+              </Box>
             </Flex>
             <FormControl mt={4}>
-              <Textarea onChange={handleChange} type="text" value={text} placeholder="pls edit here" />
+              <Textarea onChange={handleChange} type="text" value={text} placeholder="pls edit here" color="white" />
             </FormControl>
           </ModalBody>
           <ModalFooter>

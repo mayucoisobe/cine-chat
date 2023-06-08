@@ -21,7 +21,7 @@ export const Layout = ({ children }: Props) => {
       ) : (
         <>
           <Header />
-          <main>{children}</main>
+          <main style={{ paddingTop: '80px' }}>{children}</main>
         </>
       )}
     </>

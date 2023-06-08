@@ -53,6 +53,7 @@ chakra uiと併用のcss
 .myroom .stars {
   pointer-events: none;
 }
+
 .width100 {
   width: 100%;
 }

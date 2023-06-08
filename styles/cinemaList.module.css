@@ -5,6 +5,11 @@
   background-position: left, right;
   background-color: var(--primary-color);
 }
+@media (min-width: 576px) {
+  .cinelist.mylist {
+    background-position: top -1px left, top -1px right;
+  }
+}
 
 .noisebg {
   position: absolute;
@@ -85,11 +90,18 @@
   transform: translate(-50%, -50%); /* 中央に配置 */
 }
 
-.tec2 {
+.tec2,
+.tec4 {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+@media (min-width: 576px) {
+  .tec4 {
+    -webkit-line-clamp: 5;
+  }
 }
 
 .chakra-button__icon {

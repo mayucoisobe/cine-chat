@@ -24,11 +24,12 @@ import { PopoverCo } from './PopoverCo';
 
 type Props = {
   poster: string;
+  posterbg: string;
   type: string;
   title: string;
 };
 
-export const InputModal = ({ poster, movie, type, title }: Props): JSX.Element => {
+export const InputModal = ({ poster, posterbg, movie, type, title }: Props): JSX.Element => {
   const { user } = useAuthContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = useRef(null);
@@ -48,7 +49,7 @@ export const InputModal = ({ poster, movie, type, title }: Props): JSX.Element =
   // e: React.ChangeEvent<HTMLInputElement>
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    await sendList(user, poster, movie, title, type, text, value);
+    await sendList(user, poster, posterbg, movie, title, type, text, value);
     toast({
       title: 'マイシネマに追加されました！',
       status: 'success',
@@ -65,7 +66,7 @@ export const InputModal = ({ poster, movie, type, title }: Props): JSX.Element =
       {(user === null || user === undefined) && <PopoverCo />}
       {user && (
         <>
-          <Button onClick={onOpen} width={5} colorScheme="gray" p={0}>
+          <Button onClick={onOpen} width="55px" height="55px" p="8px" colorScheme="gray">
             {/* <SmallAddIcon /> */}
             <Image width={45} height={45} alt="cinemaadd" src="/film-add.svg"></Image>
           </Button>
