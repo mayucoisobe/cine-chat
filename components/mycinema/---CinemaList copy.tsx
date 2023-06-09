@@ -23,10 +23,29 @@ import { StarRating } from './StarRating';
 import { DeleteModal } from './DeleteModal';
 import { UpdateModal } from './UpdateModal';
 
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
 export const CinemaList = (): JSX.Element => {
   const { user } = useAuthContext();
   const myLists = getLists(user);
   // console.log(myLists, user);
+
+  const triggerRef = useRef<HTMLDivElement | null>(null);
+  console.log(triggerRef);
+  console.log(triggerRef.current);
+  useEffect(() => {
+    gsap.to(triggerRef.current, {
+      scrollTrigger: {
+        trigger: triggerRef.current,
+        start: 'top top',
+        once: true,
+      },
+      scale: 2,
+      duration: 1,
+    });
+  }, [triggerRef]);
 
   return (
     <Box bg="brand.200" pos="relative" minHeight="calc(100vh - 80px)">
@@ -114,6 +133,7 @@ export const CinemaList = (): JSX.Element => {
                   bgSize={{ base: '12vw', sm: '3.9rem' }}
                   px={{ base: '12vw', sm: '3.9rem' }}
                   className={`${styles.cinelist} ${styles.mylist} myroom`}
+                  ref={triggerRef}
                 >
                   <Card
                     bg="brand.200"
@@ -194,21 +214,12 @@ export const CinemaList = (): JSX.Element => {
             })}
         </>
       </Container>
-      {/* <Container pos="fixed" top="30vh" left="30vw" zIndex="100">
+      <Container pos="fixed" top="30vh" left="30vw" zIndex="100">
         <Box pos="relative">
           {myLists.length !== 0 &&
             myLists.map((list, index) => {
               return (
-                <Box
-                  key={index}
-                  pos="absolute"
-                  top="0"
-                  // left="0"
-                  left={`${index * 100}px`}
-                  zIndex={`-${index}`}
-                  w="1000px"
-                  id="bgimage"
-                >
+                <Box key={index} pos="absolute" top="0" left="0" zIndex={`-${index}`} w="1000px">
                   <Image
                     alt={list.title}
                     src={list.srcbg}
@@ -218,14 +229,14 @@ export const CinemaList = (): JSX.Element => {
                     style={{
                       width: '100%',
                       height: 'auto',
-                      opacity: '1',
+                      // opacity: '.3',
                     }}
                   ></Image>
                 </Box>
               );
             })}
         </Box>
-      </Container> */}
+      </Container>
     </Box>
   );
 };

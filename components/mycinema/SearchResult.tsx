@@ -48,8 +48,8 @@ export const SearchResult = ({ movie, type }: Props): JSX.Element => {
         alignItems={{ sm: 'center' }}
         overflow="hidden"
         variant="outline"
-        bg="brand.100"
         color="white"
+        bg="linear-gradient(180deg,#1d1f20,#010601 65.62%)"
       >
         <Box p={5} minW="180px">
           <a href={`https://www.themoviedb.org/${type}/${movie.id}`} target="_blank" rel="noopener noreferrer">
@@ -86,9 +86,3 @@ export const SearchResult = ({ movie, type }: Props): JSX.Element => {
     </Box>
   );
 };
-
-// [1].backdrop_path
-// https://image.tmdb.org/t/p/w500${movie.poster_path}
-// https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/oWH0Z5lpOnEoo3g2gFHAABtMFC4.jpg
-
-// https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/oWH0Z5lpOnEoo3g2gFHAABtMFC4.jpg

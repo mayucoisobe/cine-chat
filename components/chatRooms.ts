@@ -3,7 +3,7 @@ export const chatRooms = [
     id: 'theaters',
     title: ' 映画館 ',
     subtitle: ' Theaters ',
-    summary: ' 映画館に関するアレやコレ、座席の口コミや個性的な映画館情報まで！ ',
+    summary: ' 映画館に関するアレやコレ、席のこだわりや個性的な映画館情報まで！ ',
   },
   {
     id: 'directors',

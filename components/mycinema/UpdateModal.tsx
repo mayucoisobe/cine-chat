@@ -91,7 +91,7 @@ export const UpdateModal = ({ user, list }: JSX.Element) => {
                 キャンセル
               </Button>
               <Button
-                colorScheme="green"
+                colorScheme="teal"
                 onClick={() => {
                   handleUpdateList(list.docId);
                   onClose();

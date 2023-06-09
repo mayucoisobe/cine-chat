@@ -7,3 +7,14 @@
     inset 0px 20.0571px 20.0571px rgba(255, 255, 255, 0.24), inset 0px 1.00285px 20.5585px rgba(255, 255, 255, 0.8); */
   backdrop-filter: blur(5.5px);
 }
+header .spMenu::before {
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    #ffbc31 -7.19deg,
+    #333 14deg,
+    #333 51deg,
+    #333 311deg,
+    #ffbc31 353deg,
+    #333 374deg
+  );
+}

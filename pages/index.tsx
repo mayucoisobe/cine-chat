@@ -48,9 +48,14 @@ const Page: NextPage = () => {
       <AuthGuard>
         <Box bg="brand.100">
           <Container px={{ base: '4', sm: '6' }}>
-            {user ? <Text>{user.displayName}さん、ようこそ！</Text> : <Text>ログアウト状態です</Text>}
+            {user ? (
+              <Text color="white" pb={10} pt={5}>
+                {user.displayName}さん、ようこそ！
+              </Text>
+            ) : (
+              <Text>ログアウト状態です</Text>
+            )}
             <Box>
-              <Heading> ALL ROOMS </Heading>
               <Wrap spacingY={{ base: '15%', sm: '10%', md: '5%' }} spacingX="5%" justify="space-between">
                 {chatRooms.map((room) => (
                   <WrapItem key={room.id} m="0px" w="45%" flexDirection="column">

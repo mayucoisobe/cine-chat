@@ -109,10 +109,10 @@ export const InputModal = ({ poster, posterbg, movie, type, title }: Props): JSX
                   }}
                   mr={3}
                 >
-                  Cancel
+                  キャンセル
                 </Button>
-                <Button onClick={handleSubmit} colorScheme="blue">
-                  Save
+                <Button onClick={handleSubmit} colorScheme="teal">
+                  追加する
                 </Button>
               </ModalFooter>
             </ModalContent>

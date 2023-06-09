@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Avatar, Box, Flex, Heading, List, ListItem, Text, VStack } from '@chakra-ui/react';
 import styles from '../styles/messageListInput.module.css';
 import { useAuthContext } from '@/providers/AuthProvider';
@@ -7,25 +7,21 @@ import { formatDistance } from 'date-fns';
 import { ja } from 'date-fns/locale';
 
 export const MessageList = ({ roomId }): JSX.Element => {
-  const containerRef = useRef(null);
+  const scrollBottomRef = useRef<HTMLDivElement>(null);
   const { user } = useAuthContext();
   const messages = useMessages(roomId);
 
-  // console.log(roomId);
-  // console.log(messages);
-
-  useLayoutEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.scrollTop = containerRef.current.scrollHeight;
-    }
-    console.log(containerRef.current.scrollTop);
-  });
+  useEffect(() => {
+    scrollBottomRef?.current?.scrollIntoView({ behavior: 'smooth' });
+    console.log(scrollBottomRef.current);
+  }, [messages]);
 
   return (
-    <List ref={containerRef} className={styles.frameGradient} p={{ base: 5, sm: 7 }} my={5}>
+    <List className={styles.frameGradient} p={{ base: 5, sm: 7 }} my={5}>
       {messages.map((x) => (
         <Message key={x.id} message={x} isOwnMessage={x.uid === user.uid} />
       ))}
+      <div ref={scrollBottomRef}></div>
     </List>
   );
 };
@@ -74,21 +70,3 @@ function Message({ message, isOwnMessage }) {
     </ListItem>
   );
 }
-
-// // border枠のグラデーションを変化させる
-// const [x, setX] = useState(0);
-// const [y, setY] = useState(100);
-
-// useEffect(() => {
-//   const interval = setInterval(() => {
-//     setX((prevX) => (prevX + 1) % 101);
-//     setY((prevY) => (prevY - 2 < 0 ? 100 : prevY - 1));
-//   }, 500);
-
-//   return () => clearInterval(interval);
-// }, []);
-
-// const boxStyle = {
-//   '--x': `${x}%`,
-//   '--y': `${y}%`,
-// };
