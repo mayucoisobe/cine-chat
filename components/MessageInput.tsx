@@ -5,7 +5,7 @@ import styles from '../styles/messageListInput.module.css';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { sendMessage } from './sendGetMessage';
 
-export const MessageInput = ({ roomId }): JSX.Element => {
+export const MessageInput = ({ roomId }: { roomId: string }): JSX.Element => {
   const { user } = useAuthContext();
   const [value, setValue] = useState<string>('');
 
