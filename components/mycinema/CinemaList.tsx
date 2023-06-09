@@ -18,14 +18,14 @@ import styles from '../../styles/cinemaList.module.css';
 
 import { RiMovie2Line } from 'react-icons/ri';
 import { useAuthContext } from '@/providers/AuthProvider';
-import { getLists } from './sendGetList';
+import { useGetLists } from './sendGetList';
 import { StarRating } from './StarRating';
 import { DeleteModal } from './DeleteModal';
 import { UpdateModal } from './UpdateModal';
 
 export const CinemaList = (): JSX.Element => {
   const { user } = useAuthContext();
-  const myLists = getLists(user);
+  const myLists = useGetLists(user);
   // console.log(myLists, user);
 
   return (

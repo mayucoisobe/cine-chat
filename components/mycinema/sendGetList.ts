@@ -34,7 +34,7 @@ async function sendList(
 }
 
 // 映画データをfirebaseから取得
-function getLists(user: GlobalAuthState) {
+function useGetLists(user: GlobalAuthState) {
   const [lists, setLists] = useState([]);
 
   useEffect(() => {
@@ -58,4 +58,4 @@ function getLists(user: GlobalAuthState) {
   return lists;
 }
 
-export { sendList, getLists };
+export { sendList, useGetLists };
