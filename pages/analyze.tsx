@@ -9,12 +9,10 @@ export default function Analyze(): JSX.Element {
         <Heading as="h2" color="white" align="center" my={10} fontSize="3xl">
           偏愛MAP
         </Heading>
-        <Box mb={20}>
-          <ChartVerticalBar />
-        </Box>
-        <Box>
-          <ChartDoughnut />
-        </Box>
+
+        <ChartVerticalBar />
+
+        <ChartDoughnut />
       </Container>
     </>
   );
