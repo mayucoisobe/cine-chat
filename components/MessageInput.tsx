@@ -25,11 +25,11 @@ export const MessageInput = ({ roomId }: { roomId: string }): JSX.Element => {
         <Box className={styles.frameGradient} flexGrow="1">
           <Textarea
             onChange={handleChange}
-            type="text"
+            // type="text"
             value={value}
             placeholder="Enter a message"
             required
-            rows="1"
+            rows={1}
             minLength={1}
             className={styles.input}
             fontSize={{ base: 'sm', sm: 'md' }}
