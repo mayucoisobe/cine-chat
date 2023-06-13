@@ -13,14 +13,13 @@ export const MessageInput = ({ roomId }: { roomId: string }): JSX.Element => {
     setValue(e.target.value);
   };
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     sendMessage(roomId, user, value);
     setValue('');
   };
 
   return (
-    // <form onSubmit={handleSubmit} className="message-input-container">
     <form onSubmit={handleSubmit}>
       <Flex alignItems="center" gap={3} pb={{ base: 5, sm: 10 }}>
         <Box className={styles.frameGradient} flexGrow="1">
@@ -36,10 +35,16 @@ export const MessageInput = ({ roomId }: { roomId: string }): JSX.Element => {
             fontSize={{ base: 'sm', sm: 'md' }}
             pl={5}
             my={2}
-            // className="message-input"
           />
         </Box>
-        <Button type="submit" disabled={value < 1} backgroundColor="white" width={10} height={10} borderRadius="full">
+        <Button
+          type="submit"
+          disabled={value.length < 1}
+          backgroundColor="white"
+          width={10}
+          height={10}
+          borderRadius="full"
+        >
           <Icon as={AiOutlineSend} w={6} h={6} color="brand.100" />
         </Button>
       </Flex>

@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
 import {
   Button,
   Box,
@@ -50,7 +49,6 @@ export const CinemaList = (): JSX.Element => {
                     opacity: '.3',
                   }}
                 ></Image>
-                {/* <Box pos="absolute" top="0" left="0" h="100%" w="full" bg="#424a31" mixBlendMode="saturation"></Box> */}
                 <Box pos="absolute" top="0" left="0" h="100%" w="full" bg="#161515" mixBlendMode="hue"></Box>
               </Box>
             );

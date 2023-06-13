@@ -95,9 +95,7 @@ export default function Tweet(): JSX.Element {
                   return (
                     <div key={index}>
                       <div>
-                        <p>
-                          <img src={tweet.user.photoURL} alt="" />
-                        </p>
+                        <p>{/* <img src={tweet.user.photoURL} alt="" /> */}</p>
                         <p>@{tweet.user.name}</p>
                       </div>
                       <p>{tweet.twText}</p>
