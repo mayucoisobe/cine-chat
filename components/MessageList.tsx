@@ -6,7 +6,7 @@ import { useMessages } from '../hooks/useMessages';
 import { formatDistance } from 'date-fns';
 import { ja } from 'date-fns/locale';
 
-type Timestamp = {
+type Date = {
   it: {
     seconds: number;
     nanoseconds: number;
@@ -17,7 +17,7 @@ type Message = {
   id: string;
   uid: string;
   displayName: string;
-  photoURL: string;
+  photoURL?: string;
   text: string;
   timestamp: {
     it: {
@@ -40,7 +40,7 @@ export const MessageList = ({ roomId }: { roomId: string }): JSX.Element => {
   return (
     <List className={styles.frameGradient} p={{ base: 5, sm: 7 }} my={5}>
       {messages.map((x: Message) => (
-        <Message key={x.id} message={x} isOwnMessage={x.uid === user.uid} />
+        <Message key={x.id} message={x} isOwnMessage={user ? x.uid === user.uid : false} />
       ))}
       <div ref={scrollBottomRef}></div>
     </List>
@@ -48,7 +48,7 @@ export const MessageList = ({ roomId }: { roomId: string }): JSX.Element => {
 };
 
 // timestamp型のデータを変換;
-const time = (date: Timestamp | null) => {
+const time = (date: Date | null) => {
   console.log(date);
   if (date) {
     let timestamp = formatDistance(new Date(), date.toDate(), {
