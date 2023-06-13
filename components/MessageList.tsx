@@ -6,7 +6,28 @@ import { useMessages } from '../hooks/useMessages';
 import { formatDistance } from 'date-fns';
 import { ja } from 'date-fns/locale';
 
-export const MessageList = ({ roomId }): JSX.Element => {
+type Timestamp = {
+  it: {
+    seconds: number;
+    nanoseconds: number;
+  };
+};
+
+type Message = {
+  id: string;
+  uid: string;
+  displayName: string;
+  photoURL: string;
+  text: string;
+  timestamp: {
+    it: {
+      seconds: number;
+      nanoseconds: number;
+    };
+  };
+};
+
+export const MessageList = ({ roomId }: { roomId: string }): JSX.Element => {
   const scrollBottomRef = useRef<HTMLDivElement>(null);
   const { user } = useAuthContext();
   const messages = useMessages(roomId);
@@ -18,7 +39,7 @@ export const MessageList = ({ roomId }): JSX.Element => {
 
   return (
     <List className={styles.frameGradient} p={{ base: 5, sm: 7 }} my={5}>
-      {messages.map((x) => (
+      {messages.map((x: Message) => (
         <Message key={x.id} message={x} isOwnMessage={x.uid === user.uid} />
       ))}
       <div ref={scrollBottomRef}></div>
@@ -28,6 +49,7 @@ export const MessageList = ({ roomId }): JSX.Element => {
 
 // timestamp型のデータを変換;
 const time = (date: Timestamp | null) => {
+  console.log(date);
   if (date) {
     let timestamp = formatDistance(new Date(), date.toDate(), {
       locale: ja,
@@ -45,7 +67,8 @@ const time = (date: Timestamp | null) => {
   return '';
 };
 
-function Message({ message, isOwnMessage }) {
+function Message({ message, isOwnMessage }: { message: Message; isOwnMessage: boolean }) {
+  console.log(message);
   const { displayName, photoURL, text, timestamp } = message;
   return (
     <ListItem className={['message', isOwnMessage && 'own-message'].join(' ')} py={5}>
