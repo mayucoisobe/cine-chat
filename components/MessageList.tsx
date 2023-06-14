@@ -11,7 +11,7 @@ type convertTime = {
     seconds: number;
     nanoseconds: number;
   };
-  // toDate: () => Date;
+  toDate: () => Date;
 };
 
 type Message = {
@@ -25,6 +25,7 @@ type Message = {
       seconds: number;
       nanoseconds: number;
     };
+    toDate: () => Date;
   };
 };
 
