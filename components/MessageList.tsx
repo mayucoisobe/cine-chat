@@ -14,7 +14,7 @@ type convertTime = {
   toDate: () => Date;
 };
 
-type Message = {
+export type Message = {
   id: string;
   uid: string;
   displayName: string;
@@ -33,6 +33,7 @@ export const MessageList = ({ roomId }: { roomId: string }): JSX.Element => {
   const scrollBottomRef = useRef<HTMLDivElement>(null);
   const { user } = useAuthContext();
   const messages = useMessages(roomId);
+  console.log(messages);
 
   useEffect(() => {
     scrollBottomRef?.current?.scrollIntoView({ behavior: 'smooth' });
