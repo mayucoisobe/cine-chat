@@ -1,4 +1,10 @@
-const tvLists = [
+type TvLists = {
+  id: number;
+  name: string;
+  jpn?: string;
+};
+
+const tvLists: TvLists[] = [
   {
     id: 10759,
     name: 'Action & Adventure',

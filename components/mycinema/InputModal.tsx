@@ -17,15 +17,17 @@ import {
   useDisclosure,
   useToast,
 } from '@chakra-ui/react';
-import { SmallAddIcon } from '@chakra-ui/icons';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { StarRating } from './StarRating';
 import { sendList } from './sendGetList';
 import { PopoverCo } from './PopoverCo';
+import type { User } from '@firebase/auth';
+import type { MovieProps } from './CinemaSearch';
 
 type Props = {
   poster: string;
   posterbg: string;
+  movie: MovieProps;
   type: string;
   title: string;
 };
@@ -50,7 +52,7 @@ export const InputModal = ({ poster, posterbg, movie, type, title }: Props): JSX
   // e: React.ChangeEvent<HTMLInputElement>
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    await sendList(user, poster, posterbg, movie, title, type, text, value);
+    await sendList(user as User, poster, posterbg, movie, title, type, text, value);
     toast({
       title: 'マイシネマに追加されました！',
       status: 'success',
@@ -68,7 +70,6 @@ export const InputModal = ({ poster, posterbg, movie, type, title }: Props): JSX
       {user && (
         <>
           <Button onClick={onOpen} width="55px" height="55px" p="8px" colorScheme="gray">
-            {/* <SmallAddIcon /> */}
             <Image width={45} height={45} alt="cinemaadd" src="/film-add.svg"></Image>
           </Button>
           <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
@@ -93,11 +94,11 @@ export const InputModal = ({ poster, posterbg, movie, type, title }: Props): JSX
                     <Heading color="white" fontWeight="600" fontSize={{ base: 'md', sm: 'xl' }} pb={4}>
                       {title}
                     </Heading>
-                    <StarRating value={value} size={20} setValue={setValue} onChange={onChange} />
+                    <StarRating value={value} size={20} onChange={onChange} />
                   </Box>
                 </Flex>
                 <FormControl mt={4}>
-                  <Textarea onChange={handleChange} type="text" value={text} placeholder="memo" color="white" />
+                  <Textarea onChange={handleChange} value={text} placeholder="memo" color="white" />
                 </FormControl>
               </ModalBody>
               <ModalFooter>

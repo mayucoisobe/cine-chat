@@ -1,8 +1,9 @@
 import { deleteDoc, updateDoc, doc } from 'firebase/firestore';
 import { db } from '../../firebase';
+import type { User } from '@firebase/auth';
 
 // 映画データをfirebaseから削除
-async function deleteList(user, docId: string) {
+async function deleteList(user: User, docId: string) {
   try {
     if (user) {
       const listRef = doc(db, 'mycinema', user.uid, 'mylist', docId);
@@ -14,7 +15,7 @@ async function deleteList(user, docId: string) {
 }
 
 // 映画データを編集
-async function updateList(user, docId: string, text: string, value: number) {
+async function updateList(user: User, docId: string, text: string, value: number) {
   try {
     if (user) {
       const listRef = doc(db, 'mycinema', user.uid, 'mylist', docId);

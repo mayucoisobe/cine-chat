@@ -4,13 +4,15 @@ import axios from 'axios';
 import { SearchBar } from './SearchBar';
 import { SearchResult } from './SearchResult';
 
-type Movie = {
+export type MovieProps = {
   id: number;
   name: string;
-  original_title: string;
-  original_name: string;
+  title: string;
   poster_path: string;
-  isLargeRow?: boolean;
+  backdrop_path: string;
+  release_date?: string;
+  first_air_date?: string;
+  vote_average: number;
 };
 
 const API_KEY = 'a8063e5f47a60daac25dbb25e7c45a4b';
@@ -19,7 +21,7 @@ const TV_API_URL = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&la
 
 export const CinemaSearch = (): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<MovieProps[]>([]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [type, setType] = useState<string>('');
 

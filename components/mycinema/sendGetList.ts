@@ -1,14 +1,28 @@
 import { useEffect, useState } from 'react';
 import { collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { GlobalAuthState } from '@/providers/AuthProvider';
+import type { User } from '@firebase/auth';
+import type { MovieProps } from './CinemaSearch';
+import type { ListProps } from './CinemaList';
+
+// type Lists = {
+//   docId: string;
+//   id?: string;
+//   src?: string;
+//   star?: number;
+//   text?: string;
+//   title?: string;
+//   type?: string;
+// };
+
+// import { GlobalAuthState } from '@/providers/AuthProvider';
 
 // 映画データをfirebaseに追加
 async function sendList(
-  user: GlobalAuthState,
+  user: User,
   poster: string,
   posterbg: string,
-  movie,
+  movie: MovieProps,
   title: string,
   type: string,
   text: string,
@@ -34,8 +48,9 @@ async function sendList(
 }
 
 // 映画データをfirebaseから取得
-function useGetLists(user: GlobalAuthState) {
-  const [lists, setLists] = useState([]);
+function useGetLists(user: User) {
+  const [lists, setLists] = useState<any>([]);
+  // const [lists, setLists] = useState<Lists[]>([]);
 
   useEffect(() => {
     if (user) {

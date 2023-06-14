@@ -1,10 +1,14 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const data = {
+type Data = {
+  labels: string[];
+  datasets: { label: string; data: number[]; backgroundColor: string[]; borderColor: string[]; borderWidth: number }[];
+};
+
+export const data: Data = {
   labels: ['恋愛', 'ヒューマン', 'コメディ', 'ドキュメンタリー', 'ミステリー', 'ホラー'],
   datasets: [
     {

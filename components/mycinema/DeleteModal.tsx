@@ -18,12 +18,20 @@ import {
 } from '@chakra-ui/react';
 import { BsTrash3Fill } from 'react-icons/bs';
 import { deleteList } from './deleteUpdateList';
+// import { GlobalAuthState } from '@/providers/AuthProvider';
+import type { ListProps } from './CinemaList';
+import type { User } from '@firebase/auth';
 
-export const DeleteModal = ({ user, list }: JSX.Element) => {
+type Props = {
+  user: User;
+  list: ListProps;
+};
+
+export const DeleteModal = ({ user, list }: Props): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
 
-  const handleDeleteList = async (docId) => {
+  const handleDeleteList = async (docId: string) => {
     await deleteList(user, docId);
     toast({
       title: 'マイシネマから削除しました！',
@@ -37,7 +45,6 @@ export const DeleteModal = ({ user, list }: JSX.Element) => {
     <>
       <Button colorScheme="brand" onClick={onOpen} p={0} w={{ base: '10', sm: '12' }} h={{ base: '10', sm: '12' }}>
         <Icon as={BsTrash3Fill} w={5} h={5} color="brand.200" />
-        {/* 削除 */}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

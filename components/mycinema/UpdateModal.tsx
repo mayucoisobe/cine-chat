@@ -22,14 +22,22 @@ import {
 import { RiEditLine } from 'react-icons/ri';
 import { updateList } from './deleteUpdateList';
 import { StarRating } from './StarRating';
+// import { GlobalAuthState } from '@/providers/AuthProvider';
+import type { User } from '@firebase/auth';
+import type { ListProps } from './CinemaList';
 
-export const UpdateModal = ({ user, list }: JSX.Element) => {
+type Props = {
+  user: User;
+  list: ListProps;
+};
+
+export const UpdateModal = ({ user, list }: Props): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [text, setText] = useState<string>(`${list.text}`);
+  const [text, setText] = useState<string>(list.text);
   const [value, setValue] = useState<number>(list.star);
   const toast = useToast();
 
-  const handleUpdateList = async (docId) => {
+  const handleUpdateList = async (docId: string) => {
     await updateList(user, docId, text, value);
     toast({
       title: 'マイシネマを更新しました！',
@@ -78,11 +86,12 @@ export const UpdateModal = ({ user, list }: JSX.Element) => {
                 <Text color="white" fontWeight="600" fontSize={{ base: 'md', sm: 'xl' }} pb={4}>
                   {list.title}
                 </Text>
-                <StarRating value={value} size={20} setValue={setValue} onChange={onChange} />
+                {/* <StarRating value={setValue} size={20} onChange={onChange} /> */}
+                <StarRating value={value} isHalf={true} size={20} onChange={onChange} />
               </Box>
             </Flex>
             <FormControl mt={4}>
-              <Textarea onChange={handleChange} type="text" value={text} placeholder="pls edit here" color="white" />
+              <Textarea onChange={handleChange} value={text} placeholder="pls edit here" color="white" />
             </FormControl>
           </ModalBody>
           <ModalFooter>

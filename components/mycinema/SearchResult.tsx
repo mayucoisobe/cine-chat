@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import {
-  Button,
   Box,
   Card,
   CardBody,
@@ -15,16 +14,11 @@ import {
 } from '@chakra-ui/react';
 import { AiFillStar } from 'react-icons/ai';
 import { InputModal } from './InputModal';
+import type { MovieProps } from './CinemaSearch';
 
 type Props = {
-  title: string;
-  name: string;
-  poster_path: string;
-  backdrop_path: string;
-  release_date: string;
-  first_air_date: string;
-  vote_average: number;
-  id: number;
+  movie: MovieProps;
+  type: string;
 };
 
 const defaultImg = 'https://source.unsplash.com/random/500x750/?cinema';

@@ -1,8 +1,8 @@
 import Head from 'next/head';
-// import Link from 'next/link';
+import Link from 'next/link';
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
-import { Box, Card, CardBody, Container, Flex, Heading, Link, Image, Text, Wrap, WrapItem } from '@chakra-ui/react';
+import { Box, Card, CardBody, Container, Flex, Image, Text, Wrap, WrapItem } from '@chakra-ui/react';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { AuthGuard } from '@/feature/auth/AuthGuard';
 import { chatRooms } from '@/components/chatRooms';
@@ -37,14 +37,12 @@ const Page: NextPage = () => {
         }),
       onEnterBack: (batch) => gsap.to(batch, { autoAlpha: 1, stagger: 0.1, overwrite: true }),
       onLeaveBack: (batch) => gsap.set(batch, { autoAlpha: 0, overwrite: true }),
-      // once: true,
-      // markers: true,
     });
   }, []);
 
   return (
     <>
-      <Head></Head>
+      {/* <Head></Head> */}
       <AuthGuard>
         <Box bg="brand.100">
           <Container px={{ base: '4', sm: '6' }}>
@@ -59,7 +57,7 @@ const Page: NextPage = () => {
               <Wrap spacingY={{ base: '15%', sm: '10%', md: '5%' }} spacingX="5%" justify="space-between">
                 {chatRooms.map((room) => (
                   <WrapItem key={room.id} m="0px" w="45%" flexDirection="column">
-                    <Link href={`/room/${room.id}`} className="width100" display="block" flex="1 auto">
+                    <Link href={`/room/${room.id}`} className="width100">
                       <Card id="card" className="neon" height="100%">
                         <CardBody p="16px" display={{ md: 'flex' }} alignItems={{ md: 'center' }} gap={{ md: '1rem' }}>
                           <Flex pos="relative" direction="column" alignItems="center" w={{ md: '45%' }}>

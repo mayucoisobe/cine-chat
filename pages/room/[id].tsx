@@ -35,7 +35,7 @@ const ChatRoomPage: NextPage<StatusPageProps> = (props) => {
           <Container minHeight="calc(100vh - 80px)" px={{ base: '4', sm: '6' }}>
             <Heading
               fontSize={{ base: '5xl', sm: '6xl', md: '7xl' }}
-              align="center"
+              textAlign="center"
               py={8}
               color="transparent"
               letterSpacing="wider"

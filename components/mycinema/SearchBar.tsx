@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { Flex, FormControl, IconButton, Input, Select, Text } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
-export const SearchBar = ({ search }): JSX.Element => {
+export const SearchBar = ({
+  search,
+}: {
+  search: (searchValue: string, selectedOption: string) => void;
+}): JSX.Element => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [selectedOption, setSelectedOption] = useState<string>('option1');
 
@@ -20,8 +24,8 @@ export const SearchBar = ({ search }): JSX.Element => {
     resetInputArea();
   };
 
-  const handleSelectChange = (event) => {
-    setSelectedOption(event.target.value);
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption(e.target.value);
   };
 
   return (

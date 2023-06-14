@@ -65,7 +65,6 @@ export const Header = (): JSX.Element => {
           color="white"
           px={{ base: '4', sm: '6' }}
           className={styles.headerWrap}
-          // className="container"
         >
           <Flex alignItems="center" gap="2">
             <Box className="font-ttl">

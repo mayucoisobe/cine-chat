@@ -16,22 +16,33 @@ import {
 import styles from '../../styles/cinemaList.module.css';
 
 import { RiMovie2Line } from 'react-icons/ri';
+import type { User } from '@firebase/auth';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { useGetLists } from './sendGetList';
 import { StarRating } from './StarRating';
 import { DeleteModal } from './DeleteModal';
 import { UpdateModal } from './UpdateModal';
 
+export type ListProps = {
+  docId: string;
+  id: string;
+  src: string;
+  star: number;
+  text: string;
+  title: string;
+  type: string;
+};
+
 export const CinemaList = (): JSX.Element => {
   const { user } = useAuthContext();
-  const myLists = useGetLists(user);
-  // console.log(myLists, user);
+  const myLists = useGetLists(user as User);
+  console.log(myLists, user);
 
   return (
     <Box bg="brand.200" pos="relative" minHeight="calc(100vh - 80px)">
       <Flex flexWrap="wrap" pos="fixed" top="80px" left="0" zIndex="10" h="calc(100vh - 80px)" w="full">
         {myLists.length !== 0 &&
-          myLists.map((list, index) => {
+          myLists.map((list: ListProps, index: number) => {
             return (
               <Box
                 key={index}
@@ -85,8 +96,15 @@ export const CinemaList = (): JSX.Element => {
                   className={styles.round}
                 ></Box>
               </Center>
-              <Heading as="h1" align="center" lineHeight="none" size="lg" pos="absolute" className={styles.centerPo}>
-                {user.displayName}
+              <Heading
+                as="h1"
+                textAlign="center"
+                lineHeight="none"
+                size="lg"
+                pos="absolute"
+                className={styles.centerPo}
+              >
+                {user?.displayName}
                 <br></br>
                 <Text as="span" fontSize="12px">
                   さんの
@@ -101,7 +119,7 @@ export const CinemaList = (): JSX.Element => {
             </Text>
           )}
           {myLists.length !== 0 &&
-            myLists.map((list, index) => {
+            myLists.map((list: ListProps, index: number) => {
               return (
                 <Box
                   key={index}
@@ -165,13 +183,12 @@ export const CinemaList = (): JSX.Element => {
                         >
                           {list.title}
                         </Heading>
-                        <StarRating value={list.star} size={16} />
+                        <StarRating value={list.star} isEdit={false} size={16} />
                         <Text fontSize={{ base: 'xs', sm: 'sm' }} pt={{ base: '1', sm: '3' }} className={styles.tec4}>
                           {list.text}
                         </Text>
                       </CardBody>
                       <CardFooter
-                        // justify="space-between"
                         flexWrap="wrap"
                         gap={2}
                         sx={{
@@ -182,8 +199,8 @@ export const CinemaList = (): JSX.Element => {
                         px={0}
                         py={0}
                       >
-                        <UpdateModal flex="1" user={user} list={list} />
-                        <DeleteModal flex="1" user={user} list={list} />
+                        <UpdateModal user={user as User} list={list} />
+                        <DeleteModal user={user as User} list={list} />
                       </CardFooter>
                     </Stack>
                   </Card>
@@ -192,38 +209,6 @@ export const CinemaList = (): JSX.Element => {
             })}
         </>
       </Container>
-      {/* <Container pos="fixed" top="30vh" left="30vw" zIndex="100">
-        <Box pos="relative">
-          {myLists.length !== 0 &&
-            myLists.map((list, index) => {
-              return (
-                <Box
-                  key={index}
-                  pos="absolute"
-                  top="0"
-                  // left="0"
-                  left={`${index * 100}px`}
-                  zIndex={`-${index}`}
-                  w="1000px"
-                  id="bgimage"
-                >
-                  <Image
-                    alt={list.title}
-                    src={list.srcbg}
-                    width={1920}
-                    height={800}
-                    sizes="100vw"
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      opacity: '1',
-                    }}
-                  ></Image>
-                </Box>
-              );
-            })}
-        </Box>
-      </Container> */}
     </Box>
   );
 };

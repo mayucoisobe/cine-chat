@@ -9,15 +9,13 @@ import {
   PopoverCloseButton,
   Button,
 } from '@chakra-ui/react';
-import { AddIcon } from '@chakra-ui/icons';
 
-export const PopoverCo = ({ props }: JSX.Element) => {
+export const PopoverCo = (): JSX.Element => {
   return (
     <>
       <Popover>
         <PopoverTrigger>
           <Button width="55px" height="55px" p="8px" colorScheme="gray">
-            {/* <AddIcon /> */}
             <Image width={45} height={45} alt="cinemaadd" src="/film-add.svg"></Image>
           </Button>
         </PopoverTrigger>

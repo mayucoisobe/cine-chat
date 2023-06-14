@@ -1,8 +1,14 @@
-const moivieLists = [
+type MovieLists = {
+  id: number;
+  name: string;
+  jpn?: string;
+};
+
+const moivieLists: MovieLists[] = [
   {
     id: 28,
     name: 'Action',
-    jpn 'アクション',
+    jpn: 'アクション',
   },
   {
     id: 12,

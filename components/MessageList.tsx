@@ -3,14 +3,15 @@ import { Avatar, Box, Flex, Heading, List, ListItem, Text, VStack } from '@chakr
 import styles from '../styles/messageListInput.module.css';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { useMessages } from '../hooks/useMessages';
-import { formatDistance } from 'date-fns';
+import { formatDistance, format } from 'date-fns';
 import { ja } from 'date-fns/locale';
 
-type Date = {
+type convertTime = {
   it: {
     seconds: number;
     nanoseconds: number;
   };
+  // toDate: () => Date;
 };
 
 type Message = {
@@ -48,7 +49,7 @@ export const MessageList = ({ roomId }: { roomId: string }): JSX.Element => {
 };
 
 // timestamp型のデータを変換;
-const time = (date: Date | null) => {
+const time = (date: convertTime | null) => {
   console.log(date);
   if (date) {
     let timestamp = formatDistance(new Date(), date.toDate(), {
