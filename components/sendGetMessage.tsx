@@ -1,8 +1,9 @@
 import { collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { db } from '../firebase';
+import type { User } from '@firebase/auth';
 
 // メッセージデータをfirebaseに追加
-async function sendMessage(roomId, user, text) {
+async function sendMessage(roomId: string, user: User, text: string) {
   try {
     await addDoc(collection(db, 'chatrooms', roomId, 'messages'), {
       uid: user.uid,
@@ -17,7 +18,7 @@ async function sendMessage(roomId, user, text) {
 }
 
 // メッセージデータをfirebaseから取得
-function getMessages(roomId, callback) {
+function getMessages(roomId: string, callback: (messages: { id: string }[]) => void) {
   return onSnapshot(
     query(collection(db, 'chatrooms', roomId, 'messages'), orderBy('timestamp', 'asc')),
     (querySnapshot) => {

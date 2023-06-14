@@ -4,6 +4,7 @@ import { AiOutlineSend } from 'react-icons/ai';
 import styles from '../styles/messageListInput.module.css';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { sendMessage } from './sendGetMessage';
+import type { User } from '@firebase/auth';
 
 export const MessageInput = ({ roomId }: { roomId: string }): JSX.Element => {
   const { user } = useAuthContext();
@@ -15,7 +16,7 @@ export const MessageInput = ({ roomId }: { roomId: string }): JSX.Element => {
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    sendMessage(roomId, user, value);
+    sendMessage(roomId, user as User, value);
     setValue('');
   };
 
