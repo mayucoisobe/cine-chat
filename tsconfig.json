@@ -18,14 +18,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "pages/login.tsx",
-    "components/Header.tsx",
-    "components/mycinema/--CinemaList copy.sx",
-    "components/mycinema/---CinemaList copy.jsx"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/login.tsx", "components/Header.tsx"],
   "exclude": ["node_modules"]
 }
