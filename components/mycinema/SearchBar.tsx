@@ -31,7 +31,7 @@ export const SearchBar = ({
   return (
     <>
       <Text pt={5}>choose Movies or Tv Shows</Text>
-      <Select value={selectedOption} onChange={handleSelectChange} py={5}>
+      <Select value={selectedOption} onChange={handleSelectChange} py={5} color="white">
         <option value="option1">Movies</option>
         <option value="option2">TV shows</option>
       </Select>
