@@ -1,8 +1,8 @@
 :root {
   --primary-color: #1d1f20;
-  /* --primary-color: #010601; */
   --secondary-color: #c7bcb6;
   --tertiary-color: #d28c07;
+  /* --primary-color: #010601; */
 }
 *,
 *::before,
