@@ -59,7 +59,6 @@ export const UpdateModal = ({ user, list }: Props): JSX.Element => {
     <>
       <Button colorScheme="brand" onClick={onOpen} p={0} w={{ base: '10', sm: '12' }} h={{ base: '10', sm: '12' }}>
         <Icon as={RiEditLine} w={5} h={5} color="brand.200" />
-        {/* 編集 */}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
