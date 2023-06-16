@@ -108,7 +108,6 @@ export const Header = (): JSX.Element => {
                     justifyContent="flex-start"
                     bg="brand.100"
                     color="white"
-                    // outline="none"
                     px={{ base: '4', sm: '6' }}
                     _active={{ bg: 'brand.100', opacity: '.7' }}
                     _hover={{ bg: 'brand.100', opacity: '.7' }}
