@@ -68,9 +68,9 @@ export const CinemaList = (): JSX.Element => {
       <Container maxW="xl" pos="relative" zIndex="200" pt="5vh" right={{ md: '12%', lg: '20%' }}>
         <>
           <Box
-            borderColor="brand.100"
-            borderTopWidth="32px"
-            borderBottomWidth="16px"
+            // borderColor="brand.100"
+            // borderTopWidth="32px"
+            // borderBottomWidth="16px"
             boxShadow="2xl"
             bgSize={{ base: '12vw', sm: '3.9rem' }}
             px={{ base: '12vw', sm: '3.9rem' }}
