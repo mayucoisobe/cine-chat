@@ -91,7 +91,7 @@ export const Header = (): JSX.Element => {
           </nav>
           <IconButton
             aria-label="Open menu"
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            icon={isOpen ? <CloseIcon color="white" /> : <HamburgerIcon color="white" />}
             display={{ base: 'block', md: 'none' }}
             onClick={onOpen}
             background="transparent !important"
