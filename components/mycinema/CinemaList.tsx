@@ -140,7 +140,7 @@ export const CinemaList = (): JSX.Element => {
                     justify="space-between"
                     gap={{ base: '3', sm: '6' }}
                     px={{ base: '2', sm: '5' }}
-                    py={{ base: '4', sm: '5' }}
+                    py={{ base: '3.5', sm: '5' }}
                   >
                     <Box
                       pos="relative"
