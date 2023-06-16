@@ -106,9 +106,9 @@ export const Header = (): JSX.Element => {
                     onClick={onClose}
                     w="100%"
                     justifyContent="flex-start"
-                    bg="brand.100"
+                    // bg="brand.100"
                     color="white"
-                    outline="none"
+                    // outline="none"
                     px={{ base: '4', sm: '6' }}
                     _active={{ bg: 'brand.100', opacity: '.7' }}
                     _hover={{ bg: 'brand.100', opacity: '.7' }}
