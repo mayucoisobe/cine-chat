@@ -4,6 +4,7 @@
   /* background-repeat: no-repeat; */
   background-position: left, right;
   background-color: var(--primary-color);
+  border-top-width: 32px;
 }
 @media (min-width: 576px) {
   .cinelist.mylist {
