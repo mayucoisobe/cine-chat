@@ -106,7 +106,7 @@ export const Header = (): JSX.Element => {
                     onClick={onClose}
                     w="100%"
                     justifyContent="flex-start"
-                    // bg="brand.100"
+                    bg="brand.100"
                     color="white"
                     // outline="none"
                     px={{ base: '4', sm: '6' }}
@@ -126,7 +126,6 @@ export const Header = (): JSX.Element => {
                     px={{ base: '4', sm: '6' }}
                     _active={{ bg: 'brand.100', opacity: '.7' }}
                     _hover={{ bg: 'brand.100', opacity: '.7' }}
-                    _focus={{ boxShadow: 'none' }}
                   >
                     MyRoom <span style={{ fontSize: '14px', paddingLeft: '1em' }}> - マイルーム - </span>
                   </Button>
