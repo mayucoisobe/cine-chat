@@ -31,13 +31,22 @@ export const SearchBar = ({
   return (
     <>
       <Text pt={5}>choose Movies or Tv Shows</Text>
-      <Select value={selectedOption} onChange={handleSelectChange} py={5} color="white">
-        <option value="option1">Movies</option>
+      <Select
+        value={selectedOption}
+        onChange={handleSelectChange}
+        py={5}
+        color="red"
+        _focusVisible={{ borderColor: 'yellow.400', boxShadow: '0px 0px 0px 1px yellow.400' }}
+      >
+        <option value="option1" color="red">
+          Movies
+        </option>
         <option value="option2">TV shows</option>
       </Select>
       <form>
         <Flex gap={4}>
           <Input
+            color="white"
             value={searchValue}
             onChange={handleInputChange}
             type="text"
