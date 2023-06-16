@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import {
@@ -102,13 +101,14 @@ export const Header = (): JSX.Element => {
           <DrawerOverlay mt="80px">
             <DrawerContent mt="80px" bg="brand.100">
               <DrawerBody p={0}>
-                <Link href="/" style={{ padding: '1rem 0' }} className={styles.spMenu}>
+                <Link href="/" style={{ padding: '1rem 0' }}>
                   <Button
                     onClick={onClose}
                     w="100%"
                     justifyContent="flex-start"
                     bg="brand.100"
                     color="white"
+                    outline="none"
                     px={{ base: '4', sm: '6' }}
                     _active={{ bg: 'brand.100', opacity: '.7' }}
                     _hover={{ bg: 'brand.100', opacity: '.7' }}
