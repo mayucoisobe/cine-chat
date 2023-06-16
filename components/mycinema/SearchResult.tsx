@@ -44,6 +44,9 @@ export const SearchResult = ({ movie, type }: Props): JSX.Element => {
         variant="outline"
         color="white"
         bg="linear-gradient(180deg,#1d1f20,#010601 65.62%)"
+        borderColor="white"
+        borderWidth="1px"
+        borderStyle="solid"
       >
         <Box p={5} minW="180px">
           <a href={`https://www.themoviedb.org/${type}/${movie.id}`} target="_blank" rel="noopener noreferrer">

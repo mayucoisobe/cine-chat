@@ -35,12 +35,10 @@ export const SearchBar = ({
         value={selectedOption}
         onChange={handleSelectChange}
         py={5}
-        color="red"
+        color="white"
         _focusVisible={{ borderColor: 'yellow.400', boxShadow: '0px 0px 0px 1px yellow.400' }}
       >
-        <option value="option1" color="red">
-          Movies
-        </option>
+        <option value="option1">Movies</option>
         <option value="option2">TV shows</option>
       </Select>
       <form>
