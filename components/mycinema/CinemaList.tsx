@@ -49,17 +49,17 @@ export const CinemaList = (): JSX.Element => {
                 width={{ base: 'calc(100% / 3)', md: 'calc(100% / 4)', lg: 'calc(100% / 5)', xl: 'calc(100% / 7)' }}
               >
                 <Image
-                  alt={list.title}
                   src={list.src}
                   width={500}
                   height={750}
+                  alt={list.title}
                   sizes="100vw"
                   style={{
                     width: '100%',
                     height: 'auto',
                     opacity: '.3',
                   }}
-                ></Image>
+                />
                 <Box pos="absolute" top="0" left="0" h="100%" w="full" bg="#161515" mixBlendMode="hue"></Box>
               </Box>
             );
@@ -151,17 +151,17 @@ export const CinemaList = (): JSX.Element => {
                       href={`https://www.themoviedb.org/${list.type}/${list.id}`}
                     >
                       <Image
-                        alt={list.title}
                         src={list.src}
                         width={500}
                         height={750}
+                        alt={list.title}
                         sizes="100vw"
                         style={{
                           width: '100%',
                           height: 'auto',
                           borderRadius: '.5rem',
                         }}
-                      ></Image>
+                      />
                       <Button
                         w={{ base: '10', sm: '12' }}
                         h={{ base: '10', sm: '12' }}

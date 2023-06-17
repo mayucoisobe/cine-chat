@@ -58,10 +58,10 @@ export const DeleteModal = ({ user, list }: Props): JSX.Element => {
             <Flex justifyContent="space-between" gap={{ base: '3', sm: '6' }}>
               <Box w="40%">
                 <Image
-                  width="150"
-                  height="225"
-                  alt={list.title}
                   src={list.src}
+                  width={150}
+                  height={225}
+                  alt={list.title}
                   style={{
                     borderRadius: '.5rem',
                   }}

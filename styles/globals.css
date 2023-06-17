@@ -63,10 +63,6 @@ chakra uiと併用のcss
 .stars {
   display: flex;
 }
-/* .myroom .stars {
-  pointer-events: none;
-} */
-
 .width100 {
   width: 100%;
   flex: 1 auto;

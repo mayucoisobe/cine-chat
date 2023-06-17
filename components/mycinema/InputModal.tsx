@@ -70,7 +70,7 @@ export const InputModal = ({ poster, posterbg, movie, type, title }: Props): JSX
       {user && (
         <>
           <Button onClick={onOpen} width="55px" height="55px" p="8px" colorScheme="gray">
-            <Image width={45} height={45} alt="cinemaadd" src="/film-add.svg"></Image>
+            <Image src="/film-add.svg" width={45} height={45} alt="cinemaadd" />
           </Button>
           <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
@@ -81,9 +81,9 @@ export const InputModal = ({ poster, posterbg, movie, type, title }: Props): JSX
                 <Flex justifyContent="space-between" gap={{ base: '3', sm: '6' }}>
                   <Box w="40%">
                     <Image
-                      width="150"
-                      height="225"
                       src={poster}
+                      width={150}
+                      height={225}
                       alt="poster-image"
                       style={{
                         borderRadius: '.5rem',

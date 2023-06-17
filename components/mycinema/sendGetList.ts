@@ -5,18 +5,6 @@ import type { User } from '@firebase/auth';
 import type { MovieProps } from './CinemaSearch';
 import type { ListProps } from './CinemaList';
 
-// type Lists = {
-//   docId: string;
-//   id?: string;
-//   src?: string;
-//   star?: number;
-//   text?: string;
-//   title?: string;
-//   type?: string;
-// };
-
-// import { GlobalAuthState } from '@/providers/AuthProvider';
-
 // 映画データをfirebaseに追加
 async function sendList(
   user: User,

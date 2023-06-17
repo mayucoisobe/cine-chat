@@ -22,7 +22,6 @@ import {
 import { RiEditLine } from 'react-icons/ri';
 import { updateList } from './deleteUpdateList';
 import { StarRating } from './StarRating';
-// import { GlobalAuthState } from '@/providers/AuthProvider';
 import type { User } from '@firebase/auth';
 import type { ListProps } from './CinemaList';
 
@@ -72,10 +71,10 @@ export const UpdateModal = ({ user, list }: Props): JSX.Element => {
             <Flex justifyContent="space-between" gap={{ base: '3', sm: '6' }}>
               <Box w="40%">
                 <Image
-                  width="150"
-                  height="225"
-                  alt={list.title}
                   src={list.src}
+                  width={150}
+                  height={225}
+                  alt={list.title}
                   style={{
                     borderRadius: '.5rem',
                   }}
@@ -85,7 +84,6 @@ export const UpdateModal = ({ user, list }: Props): JSX.Element => {
                 <Text color="white" fontWeight="600" fontSize={{ base: 'md', sm: 'xl' }} pb={4}>
                   {list.title}
                 </Text>
-                {/* <StarRating value={setValue} size={20} onChange={onChange} /> */}
                 <StarRating value={value} isHalf={true} size={20} onChange={onChange} />
               </Box>
             </Flex>

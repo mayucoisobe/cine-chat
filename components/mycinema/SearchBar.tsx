@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Flex, FormControl, IconButton, Input, Select, Text } from '@chakra-ui/react';
+import { Flex, IconButton, Input, Select, Text } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
 export const SearchBar = ({

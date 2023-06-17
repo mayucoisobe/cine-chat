@@ -16,7 +16,7 @@ export const PopoverCo = (): JSX.Element => {
       <Popover>
         <PopoverTrigger>
           <Button width="55px" height="55px" p="8px" colorScheme="gray">
-            <Image width={45} height={45} alt="cinemaadd" src="/film-add.svg"></Image>
+            <Image src="/film-add.svg" width={45} height={45} alt="cinemaadd" />
           </Button>
         </PopoverTrigger>
         <PopoverContent w="270px" ml={2}>
