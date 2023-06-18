@@ -1,10 +1,10 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
 import { Box, Card, CardBody, Container, Flex, Image, Text, Wrap, WrapItem } from '@chakra-ui/react';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { AuthGuard } from '@/feature/auth/AuthGuard';
+import { HeadMeta } from '@/components/organisms/HeadMeta';
 import { chatRooms } from '@/components/chatRooms';
 // gsapアニメーション
 import { gsap } from 'gsap';
@@ -42,7 +42,7 @@ const Page: NextPage = () => {
 
   return (
     <>
-      {/* <Head></Head> */}
+      <HeadMeta title={'Chat | cinemyroom'} description={'cinemyroomのチャットルーム一覧ページです。'} />
       <AuthGuard>
         <Box bg="brand.100">
           <Container px={{ base: '4', sm: '6' }}>

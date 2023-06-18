@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { Box, Container, Heading, Text } from '@chakra-ui/react';
 import { AuthGuard } from '@/feature/auth/AuthGuard';
+import { HeadMeta } from '@/components/organisms/HeadMeta';
 import { MessageInput } from '../../components/MessageInput';
 import { MessageList } from '../../components/MessageList';
 // import { useRouter } from 'next/router';
@@ -23,13 +24,14 @@ export const getServerSideProps: GetServerSideProps<StatusPageProps> = async (co
 };
 
 const ChatRoomPage: NextPage<StatusPageProps> = (props) => {
-  const title = `${props.id}-room`;
+  const roomId = `${props.id}-room`;
   return (
     <>
-      <Head>
-        <title>{title}</title>
+      {/* <Head>
+        <title>{roomId}</title>
         <meta property="og:title" content={title} key="ogtitle" />
-      </Head>
+      </Head> */}
+      <HeadMeta title={`${roomId} | cinemyroom`} description={`${roomId}のチャットルームページです。`} />
       <AuthGuard>
         <Box bg="brand.100" color="white">
           <Container minHeight="calc(100vh - 80px)" px={{ base: '4', sm: '6' }}>
