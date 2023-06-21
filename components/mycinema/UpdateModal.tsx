@@ -39,7 +39,7 @@ export const UpdateModal = ({ user, list }: Props): JSX.Element => {
   const handleUpdateList = async (docId: string) => {
     await updateList(user, docId, text, value);
     toast({
-      title: 'マイシネマを更新しました！',
+      title: 'マイルームを更新しました！',
       status: 'success',
       position: 'top',
       isClosable: true,

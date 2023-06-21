@@ -1,5 +1,4 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 import { Box, Container, Heading, Text } from '@chakra-ui/react';
 import { AuthGuard } from '@/feature/auth/AuthGuard';
@@ -24,13 +23,13 @@ export const getServerSideProps: GetServerSideProps<StatusPageProps> = async (co
 };
 
 const ChatRoomPage: NextPage<StatusPageProps> = (props) => {
-  const roomId = `${props.id}-room`;
+  const roomId = `${props.id}-chatroom`;
   return (
     <>
       <HeadMeta
         title={`${roomId} | cinemyroom`}
         description={`${roomId}のチャットルームページです。`}
-        url={`https://cinemyroom.vercel.app/room/${props.id}`}
+        url={`https://cinemyroom.vercel.app/chatroom/${props.id}`}
         type={'article'}
       />
       <AuthGuard>
@@ -48,7 +47,9 @@ const ChatRoomPage: NextPage<StatusPageProps> = (props) => {
             </Heading>
             <Box>
               <Text>
-                <Link href="/">← Back to home</Link>
+                <Link href="/" style={{ width: 'fit-content' }}>
+                  ← Back to home
+                </Link>
               </Text>
             </Box>
             <Box>

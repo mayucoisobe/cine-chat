@@ -4,8 +4,8 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "CINEMY-ROOM",
-  "short_name": "CINEMY-ROOM",
+  "name": "CineMyRoom",
+  "short_name": "CineMyRoom",
   "icons": [
     {
       "src": "/icon-192x192.png",

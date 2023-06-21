@@ -54,7 +54,7 @@ export const InputModal = ({ poster, posterbg, movie, type, title }: Props): JSX
     e.preventDefault();
     await sendList(user as User, poster, posterbg, movie, title, type, text, value);
     toast({
-      title: 'マイシネマに追加されました！',
+      title: 'マイルームに追加されました！',
       status: 'success',
       position: 'top',
       isClosable: true,

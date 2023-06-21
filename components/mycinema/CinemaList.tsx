@@ -14,10 +14,10 @@ import {
   Text,
 } from '@chakra-ui/react';
 import styles from '../../styles/cinemaList.module.css';
-
 import { RiMovie2Line } from 'react-icons/ri';
 import type { User } from '@firebase/auth';
 import { useAuthContext } from '@/providers/AuthProvider';
+import { HeadTitle } from '@/components/molecules/HeadTitle';
 import { useGetLists } from './sendGetList';
 import { StarRating } from './StarRating';
 import { DeleteModal } from './DeleteModal';
@@ -65,8 +65,9 @@ export const CinemaList = (): JSX.Element => {
             );
           })}
       </Flex>
-      <Container maxW="xl" pos="relative" zIndex="200" pt="5vh" right={{ md: '12%', lg: '20%' }}>
+      <Container maxW="xl" pos="relative" zIndex="200" right={{ md: '12%', lg: '20%' }}>
         <>
+          <HeadTitle title={'マイルーム'} />
           <Box
             borderColor="brand.100"
             borderTopWidth="32px"

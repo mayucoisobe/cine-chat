@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Box, Container } from '@chakra-ui/react';
 import axios from 'axios';
+import { HeadTitle } from '@/components/molecules/HeadTitle';
 import { SearchBar } from './SearchBar';
 import { SearchResult } from './SearchResult';
 
@@ -56,6 +57,7 @@ export const CinemaSearch = (): JSX.Element => {
     <>
       <Box bg="brand.100" color="white">
         <Container minHeight="calc(100vh - 80px)" px={{ base: '4', sm: '6' }}>
+          <HeadTitle title={'作品を探す'} />
           <SearchBar search={search} />
           <div>
             {errorMessage ? (

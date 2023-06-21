@@ -34,7 +34,7 @@ export const DeleteModal = ({ user, list }: Props): JSX.Element => {
   const handleDeleteList = async (docId: string) => {
     await deleteList(user, docId);
     toast({
-      title: 'マイシネマから削除しました！',
+      title: 'マイルームから削除しました！',
       status: 'success',
       position: 'top',
       isClosable: true,
@@ -53,7 +53,7 @@ export const DeleteModal = ({ user, list }: Props): JSX.Element => {
           <ModalCloseButton color="white" />
           <ModalBody>
             <Text color="white" pb={4}>
-              マイシネマから削除しますか？
+              マイルームから削除しますか？
             </Text>
             <Flex justifyContent="space-between" gap={{ base: '3', sm: '6' }}>
               <Box w="40%">

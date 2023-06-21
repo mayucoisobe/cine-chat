@@ -62,7 +62,7 @@ const Page: NextPage = () => {
               <Wrap spacingY={{ base: '15%', sm: '10%', md: '5%' }} spacingX="5%" justify="space-between">
                 {chatRooms.map((room) => (
                   <WrapItem key={room.id} m="0px" w="45%" flexDirection="column">
-                    <Link href={`/room/${room.id}`} className="width100">
+                    <Link href={`/chatroom/${room.id}`} className="width100">
                       <Card id="card" className="neon" height="100%">
                         <CardBody p="16px" display={{ md: 'flex' }} alignItems={{ md: 'center' }} gap={{ md: '1rem' }}>
                           <Flex pos="relative" direction="column" alignItems="center" w={{ md: '45%' }}>
