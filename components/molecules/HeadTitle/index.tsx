@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 
 type HeadTitleProps = {
   title: string;
@@ -8,22 +8,16 @@ type HeadTitleProps = {
 export const HeadTitle = ({ title }: HeadTitleProps) => {
   return (
     <>
-      <Box pt="5vh">
+      <Flex pt="5vh" pb={{ base: '4', sm: '8' }}>
         <Text color="white" fontSize={{ base: 'md', sm: 'lg' }}>
           <Link href="/" style={{ width: 'fit-content' }}>
-            ← Back to home
+            ← Home
           </Link>
         </Text>
-        <Heading
-          as="h2"
-          color="white"
-          textAlign="center"
-          my={{ base: '4', sm: '8' }}
-          fontSize={{ base: '2xl', sm: '3xl' }}
-        >
+        <Heading as="h2" color="white" textAlign="center" fontSize={{ base: 'xl', sm: '2xl' }} pl={10}>
           {title}
         </Heading>
-      </Box>
+      </Flex>
     </>
   );
 };
