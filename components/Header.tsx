@@ -66,9 +66,9 @@ export const Header = (): JSX.Element => {
           className={styles.headerWrap}
         >
           <Flex alignItems="center" gap="2">
-            <Box className="font-ttl">
+            <h1 className="font-ttl">
               <Link href="/">CINEMY==ROOM</Link>
-            </Box>
+            </h1>
           </Flex>
           <nav>
             <Flex as="ul" gap={6} display={{ base: 'none', md: 'flex' }}>
