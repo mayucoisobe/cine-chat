@@ -42,7 +42,12 @@ const Page: NextPage = () => {
 
   return (
     <>
-      <HeadMeta title={'Chat | cinemyroom'} description={'cinemyroomのチャットルーム一覧ページです。'} />
+      <HeadMeta
+        title={'Chat | cinemyroom'}
+        description={'cinemyroomのチャットルーム一覧ページです。'}
+        url={'https://cinemyroom.vercel.app/'}
+        type={'website'}
+      />
       <AuthGuard>
         <Box bg="brand.100">
           <Container px={{ base: '4', sm: '6' }}>

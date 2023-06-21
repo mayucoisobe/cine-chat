@@ -27,11 +27,12 @@ const ChatRoomPage: NextPage<StatusPageProps> = (props) => {
   const roomId = `${props.id}-room`;
   return (
     <>
-      {/* <Head>
-        <title>{roomId}</title>
-        <meta property="og:title" content={title} key="ogtitle" />
-      </Head> */}
-      <HeadMeta title={`${roomId} | cinemyroom`} description={`${roomId}のチャットルームページです。`} />
+      <HeadMeta
+        title={`${roomId} | cinemyroom`}
+        description={`${roomId}のチャットルームページです。`}
+        url={`https://cinemyroom.vercel.app/room/${props.id}`}
+        type={'article'}
+      />
       <AuthGuard>
         <Box bg="brand.100" color="white">
           <Container minHeight="calc(100vh - 80px)" px={{ base: '4', sm: '6' }}>

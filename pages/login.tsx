@@ -25,7 +25,12 @@ export default function Login(): JSX.Element {
 
   return (
     <div>
-      <HeadMeta title={'Login | cinemyroom'} description={'cinemyroomのログインページです。'} />
+      <HeadMeta
+        title={'Login | cinemyroom'}
+        description={'cinemyroomのログインページです。'}
+        url={'https://cinemyroom.vercel.app/login'}
+        type={'article'}
+      />
       <Box bg="brand.100" color="white">
         <Container>
           <Box position="relative" height={`calc(100vh - 80px)`}>
