@@ -26,7 +26,7 @@ export const HeadMeta = ({ title, description, url, type }: HeadMetaProps) => {
       <meta name="twitter:site" content="@mayukoony" />
       <meta name="twitter:image" content="https://cinemyroom.vercel.app/ogp-img.png" />
       {/* Canonical */}
-      <link rel="canonical" href="https://cinemyroom.vercel.app/"></link>
+      <link rel="canonical" href={url}></link>
     </Head>
   );
 };
