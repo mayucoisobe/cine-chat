@@ -71,7 +71,8 @@ CSS フレームワークにはChakraUIを使い、映画の検索には、TMDB 
 #### Links
 
 - [**CineMyRoom**](https://cinemyroom.vercel.app/)
-- [**GitHub**](https://github.com/mayucoisobe/cine-chat)
+- [**Portfolio**](https://mimivel-dev.vercel.app/)
+
 
 
 
