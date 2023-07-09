@@ -40,7 +40,7 @@ React/TypeScript/Next.js で構築しました。ホスティングは Vercel �
 - Firebase (CloudFirestore / FirebaseAuthentication)
 - Chakra UI
 - GSAP
-- [TMDB API](https://developer.themoviedb.org/docs) - learn about Next.js features and API.
+- [TMDB API](https://developer.themoviedb.org/docs) 
 
 
 ## 苦労したポイント
