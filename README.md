@@ -25,10 +25,19 @@
 - Search(作品検索+マイルームへの登録/ 検索のみログインなしで利用可)
 - Analyze U(映画鑑賞傾向の分析ページ)
 
-## 🚀 画面構成
+## 🚀 画面構成　
+ChatRoom ページ / Analyze ページ
+
 <img src="https://github.com/mayucoisobe/cine-chat/assets/121940353/39b516eb-026c-4964-b1d0-044972aa05f4" alt="ChatRoom Page" width='30%'>
 <img src="https://github.com/mayucoisobe/cine-chat/assets/121940353/7f63d0fd-f74c-4d21-8a8d-6cb41e7e8119" alt="ChatRoom Page" width='30%'>
 <img src="https://github.com/mayucoisobe/cine-chat/assets/121940353/d7abd884-a8b0-4a54-b543-8f12c64dfbcc" alt="ChatRoom Page" width='30%'>
+
+MyRoom ページ / Search ページ
+
+https://github.com/mayucoisobe/cine-chat/assets/121940353/dd849ae4-3b75-4fb2-ab9b-3dd63a66ea75
+
+
+
 
 
 ## 技術スタック
