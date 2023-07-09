@@ -1,5 +1,6 @@
 # CineMyRoom
-## 🚀 映画好きのための映画検索+記録帖、そして様々なスレについてチャットで交流できる映画アプリです！
+### 🧞 映画好きのための映画検索+記録帖、そして様々なスレについてチャットで交流できる映画アプリです！
+
 <img width="693" alt="スクリーンショット 2023-07-09 1 12 31" src="https://github.com/mayucoisobe/cine-chat/assets/121940353/408f207f-3b49-4d49-b6aa-aa978a306184">
 
 ## 背景・目的
@@ -22,12 +23,15 @@
 - Search(作品検索+マイルームへの登録/ 検索のみログインなしで利用可)
 - Analyze U(映画鑑賞傾向の分析ページ)
 
-## 画面構成
+## 🚀 画面構成
 
 ## 技術スタック
 React/TypeScript/Next.js で構築しました。ホスティングは Vercel を利用し、PWA 対応しました。
 
-映画の検索には、TMDB の API を利用し、映画とドラマから各々検索できるようになっています。 データベース・認証機能は Firebase を使っています。
+映画の検索には、TMDB の API を利用し、映画とドラマから各々検索できるようになっています。 
+
+データベース・認証機能は Firebase を使っています。
+
 ---
 - React
 - TypeScript
@@ -38,7 +42,21 @@ React/TypeScript/Next.js で構築しました。ホスティングは Vercel �
 - GSAP
 - [TMDB API](https://developer.themoviedb.org/docs) - learn about Next.js features and API.
 
+
 ## 苦労したポイント
+> TypeScript
+
+- 基本の型を確認した程度で挑んだため、エラーだらけになり時間がかかりました。
+  今後より理解を深めつつ、次の制作時に活かしていきます。
+
+> コンポーネント管理
+
+- ページ構成に沿ってコンポーネントを分割しようとしたのですが、ざっくりとしか設計していなかったため、乱雑になってしまいました。
+
+#### Links
+
+- [**CineMyRoom**](https://cinemyroom.vercel.app/)
+- [**GitHub**](https://github.com/mayucoisobe/cine-chat)
 
 
 
