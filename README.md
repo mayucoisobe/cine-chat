@@ -1,40 +1,78 @@
+# CineMyRoom
+### 🧞 映画好きに向けた、映画の検索+記録帳、様々なスレについてチャットで交流できる映画アプリです。
+
 <img width="693" alt="スクリーンショット 2023-07-09 1 12 31" src="https://github.com/mayucoisobe/cine-chat/assets/121940353/408f207f-3b49-4d49-b6aa-aa978a306184">
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 背景・目的
 
-## Getting Started
+映画を見るのが趣味の 1 つで、以前より個人的に何かいいツールはないかなと探していました。 
 
-First, run the development server:
+主に以下の目的を達成したく、アプリ制作に至りました。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- 鑑賞した記録を個人メモとして残したい。以前はノートや手帳に書いていたこともあったが残せる形にしたい。
+- 鑑賞直後に疑問に思った場面について無性に気になってしまい、口コミや解説を読んで夢中で探していることがあるが、一方的な情報発信ではなく友人と感想を語りあるような形で、チャットのように交流しながら語れるスペースが欲しい。
+- 鑑賞傾向などを可視化して見れたら面白そう！
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+以上のことから、これらの複合的な機能を持った映画アプリを制作することにしました。
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 概要
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+主な機能
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Login（Google アカウントでの認証）
+- ChatRoom(チャットルーム)
+- MyRoom(鑑賞した作品の記録一覧)
+- Search(作品検索+マイルームへの登録/ 検索のみログインなしで利用可)
+- Analyze U(映画鑑賞傾向の分析ページ)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🚀 画面構成　
+ChatRoom ページ / Analyze ページ
 
-## Learn More
+<img src="https://github.com/mayucoisobe/cine-chat/assets/121940353/39b516eb-026c-4964-b1d0-044972aa05f4" alt="ChatRoom Page" width='30%'>
+<img src="https://github.com/mayucoisobe/cine-chat/assets/121940353/7f63d0fd-f74c-4d21-8a8d-6cb41e7e8119" alt="ChatRoom Page" width='30%'>
+<img src="https://github.com/mayucoisobe/cine-chat/assets/121940353/d7abd884-a8b0-4a54-b543-8f12c64dfbcc" alt="ChatRoom Page" width='30%'>
 
-To learn more about Next.js, take a look at the following resources:
+MyRoom ページ / Search ページ
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+https://github.com/mayucoisobe/cine-chat/assets/121940353/dd849ae4-3b75-4fb2-ab9b-3dd63a66ea75
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## 技術スタック
+React/TypeScript/Next.js で構築しました。ホスティングは Vercel を利用し、PWA 対応しました。
+
+CSS フレームワークにはChakraUIを使い、映画の検索には、TMDB の API を利用し、映画とドラマから各々検索できるようになっています。 
+
+データベース・認証機能は Firebase を使っています。
+
+---
+- React
+- TypeScript
+- Next.js 13.4.2
+- Vercel
+- Firebase (CloudFirestore / FirebaseAuthentication)
+- Chakra UI
+- GSAP
+- [TMDB API](https://developer.themoviedb.org/docs) 
+
+
+## 苦労したポイント
+> TypeScript
+
+- 基本の型を確認した程度の浅い知識で制作したため、エラーの解消時間がかかりました。
+  今後より理解を深めつつ、次の制作時に活かしていきます。
+
+> コンポーネント管理
+
+- ページ構成に沿ってコンポーネントを分割しようとしたのですが、ざっくりとしか設計していなかったため、制作が進むにつれコンポーネントが乱立し纏まりがなくなってしまいました。
+
+#### Links
+
+- [**CineMyRoom**](https://cinemyroom.vercel.app/)
+- [**Portfolio**](https://mimivel-dev.vercel.app/)
+
+
+
+
