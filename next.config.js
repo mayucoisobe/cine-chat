@@ -14,7 +14,7 @@ module.exports = withPWA({
     register: true,
     skipWaiting: true,
   },
-  reactStrinctMode: true,
+  reactStrictMode: true,
 });
 
 module.exports = nextConfig;
