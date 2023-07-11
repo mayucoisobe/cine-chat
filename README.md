@@ -38,10 +38,8 @@ https://github.com/mayucoisobe/cine-chat/assets/121940353/dd849ae4-3b75-4fb2-ab9
 
 
 
-
-
 ## 技術スタック
-React/TypeScript/Next.js で構築しました。ホスティングは Vercel を利用し、PWA 対応しました。
+React/TypeScript/Next.js で構築しました。ホスティングは Vercel を利用しました。
 
 CSS フレームワークにはChakraUIを使い、映画の検索には、TMDB の API を利用し、映画とドラマから各々検索できるようになっています。 
 
