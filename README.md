@@ -15,6 +15,9 @@
 
 以上のことから、これらの複合的な機能を持った映画アプリを制作することにしました。
 
+## 制作期間
+1ヶ月
+
 ## 概要
 
 主な機能
@@ -35,7 +38,6 @@ ChatRoom ページ / Analyze ページ
 MyRoom ページ / Search ページ
 
 https://github.com/mayucoisobe/cine-chat/assets/121940353/dd849ae4-3b75-4fb2-ab9b-3dd63a66ea75
-
 
 
 ## 技術スタック
